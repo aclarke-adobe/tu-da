@@ -137,6 +137,27 @@ main .default-content-wrapper:has(+ .cards-news-wrapper) > :is(h2, h3):last-chil
   margin-bottom: calc(25px - var(--section-padding));
 }
 
+/* linked heading above a featured list (homepage "Read our latest news"): the source centres it
+   in an 800px column, keeps the link heading-coloured (underline on hover) and leaves 55px */
+main .default-content-wrapper:has(+ .cards-news-wrapper .cards-news:not(.related)) > :is(h2, h3):last-child:has(a) {
+  max-width: var(--text-max-width);
+  margin-inline: auto;
+  text-align: center;
+
+  /* collapses with (and, being larger, wins over) the 40px gap between section children */
+  margin-bottom: 55px;
+}
+
+main .default-content-wrapper:has(+ .cards-news-wrapper .cards-news:not(.related)) > :is(h2, h3):last-child a:any-link {
+  color: inherit;
+  font-weight: inherit;
+  text-decoration: none;
+}
+
+main .default-content-wrapper:has(+ .cards-news-wrapper .cards-news:not(.related)) > :is(h2, h3):last-child a:is(:hover, :focus-visible) {
+  text-decoration: underline;
+}
+
 /* related news on articles: the source sets the list well apart from the article (120px) */
 main .default-content-wrapper:has(+ .cards-news-wrapper .cards-news.related) > :is(h2, h3):last-child:not(:has(a), :first-child) {
   margin-top: 120px;
