@@ -11,6 +11,13 @@
 
 const text = (el) => (el ? el.textContent.replace(/\s+/g, ' ').trim() : '');
 
+// Live feed: the source loads its yourir app (https://yourir.info/<appID>.js) through its tag
+// manager, so the ID isn't in the captured page; this is Transurban's yourir app ID. The
+// symbol comes from the items (data-yourir-id="tcl.asx/<fileID>"). With Feed + App ID rows
+// the block loads live releases and keeps the snapshot rows below as the offline fallback.
+const YOURIR_APP_ID = 'a50955429d255a58';
+const SOURCE_PAGE_SIZE = '15';
+
 export default function parse(element, { document }) {
   const scope = element.closest('.asx-releases, .module--asx-releases') || element.parentElement || element;
   const items = [...element.querySelectorAll('.results-list__item')]
@@ -35,6 +42,10 @@ export default function parse(element, { document }) {
     .forEach((n) => { if (!element.contains(n) || n.tagName === 'SCRIPT') n.remove(); });
 
   if (!cells.length) return;
-  const block = WebImporter.Blocks.createBlock(document, { name: 'releases-list', cells });
+  const idAttr = (items.find((i) => i.getAttribute('data-yourir-id')) || element.querySelector('[data-yourir-id]'));
+  const symbol = idAttr ? (idAttr.getAttribute('data-yourir-id') || '').split('/')[0] : '';
+  const config = [['Page size', SOURCE_PAGE_SIZE]];
+  if (symbol) config.push(['Feed', symbol], ['App ID', YOURIR_APP_ID]);
+  const block = WebImporter.Blocks.createBlock(document, { name: 'releases-list', cells: [...config, ...cells] });
   element.replaceWith(block);
 }

@@ -11,7 +11,7 @@
     "purpose": "search box and dropdown filters for the ASX releases list that follows it"
   },
   "contentPattern": {
-    "structure": "key/value rows: Search | placeholder; Category | all-label then options; Year | all-label then options or \"auto\"; optional Target | CSS selector of items",
+    "structure": "key/value rows: Search | placeholder; Category | all-label then options; Year | all-label then options, \"auto\", or a token like \"2009+\" (current year down to 2009); optional Target | CSS selector of items. Filters server-side when the list is a releases-list feed",
     "fields": [
       "search",
       "category",

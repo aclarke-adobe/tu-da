@@ -29,10 +29,16 @@ export default function parse(element, { document }) {
   }
 
   element.querySelectorAll('select').forEach((select) => {
-    const values = [...select.querySelectorAll('option')]
+    let values = [...select.querySelectorAll('option')]
       .map((o) => o.textContent.trim())
       .filter(Boolean);
     if (!values.length) return;
+    // Year lists are a snapshot of the feed's years at import time: author them as
+    // "<oldest>+" (every year from the current year down to the oldest) so new years appear.
+    if (keyFor(select) === 'Year') {
+      const years = values.filter((v) => /^\d{4}$/.test(v)).map(Number);
+      if (years.length > 1) values = [...values.filter((v) => !/^\d{4}$/.test(v)), `${Math.min(...years)}+`];
+    }
     const ul = document.createElement('ul');
     values.forEach((v) => {
       const li = document.createElement('li');

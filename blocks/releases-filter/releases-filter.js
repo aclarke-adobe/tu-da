@@ -7,10 +7,13 @@
  *   Search   | placeholder text (omit the row to hide the search box)
  *   Category | "All announcements" label, then the options (list or comma-separated)
  *   Year     | "All years" label, then the options; use "auto" to derive the
- *              years (4-digit numbers) from the items
+ *              years (4-digit numbers) from the items, or a token like "2009+"
+ *              for every year from the current year down to 2009
  *   Target   | optional CSS selector of the items to filter
  * Filter values are kept in the URL (?q=&category=&year=) and a
  * `releases-filter:change` event is dispatched on document with the values.
+ * When the list is a live releases-list feed (`.releases-list[data-feed]`) the
+ * items are not hidden here: the feed filters server-side from the event.
  */
 
 const DEFAULT_TARGET = 'li, tbody tr, .cards-news-card';
@@ -36,6 +39,38 @@ function readConfig(block) {
     }
   });
   return config;
+}
+
+const FEED_LIST = '.releases-list[data-feed]:not([data-feed-status="offline"])';
+
+/** "2009+" -> current year down to 2009 */
+function expandYears(values) {
+  const current = new Date().getFullYear();
+  return values.flatMap((v) => {
+    const m = v.match(/^((?:19|20)\d{2})\s*\+$/);
+    if (!m) return [v];
+    const years = [];
+    for (let y = current; y >= Number(m[1]); y -= 1) years.push(String(y));
+    return years;
+  }).filter((v, i, all) => all.indexOf(v) === i);
+}
+
+/** true when the filtered list is a releases-list in live feed mode */
+function targetsFeed(block, selector) {
+  const wrapper = block.closest('.releases-filter-wrapper') || block;
+  const section = block.closest('.section') || document.querySelector('main');
+  const walk = (start) => {
+    let next = start;
+    while (next) {
+      if (next.matches(FEED_LIST) || next.querySelector(FEED_LIST)) return true;
+      if (next.querySelector(selector)) return false;
+      next = next.nextElementSibling;
+    }
+    return null;
+  };
+  let found = walk(wrapper.nextElementSibling);
+  if (found === null && section !== wrapper) found = walk(section.nextElementSibling);
+  return Boolean(found);
 }
 
 function findItems(block, selector) {
@@ -128,6 +163,8 @@ export default function decorate(block) {
         items.forEach((it) => (it.textContent.match(/\b(19|20)\d{2}\b/g) || []).forEach((y) => years.add(y)));
         values = [...years].sort().reverse();
         if (!values.length) return;
+      } else {
+        values = expandYears(values);
       }
       populated.add(filter.key);
       values.forEach((v) => {
@@ -144,7 +181,13 @@ export default function decorate(block) {
   const apply = () => {
     items = findItems(block, selector);
     const state = Object.fromEntries(Object.entries(controls).map(([k, c]) => [k, c.value.trim()]));
+    // a live feed filters server-side from the event: never hide its items
+    const feed = targetsFeed(block, selector);
     items.forEach((item) => {
+      if (feed) {
+        item.hidden = false;
+        return;
+      }
       const text = item.textContent.toLowerCase();
       const visible = Object.values(state).every((v) => !v || text.includes(v.toLowerCase()));
       item.hidden = !visible;
@@ -172,6 +215,10 @@ export default function decorate(block) {
   form.addEventListener('focusin', () => {
     items = findItems(block, selector);
     populate();
+  });
+  // a feed that fails falls back to its authored rows: filter those client-side
+  document.addEventListener('releases-list:offline', () => {
+    if (Object.values(controls).some((c) => c.value.trim())) apply();
   });
   const init = () => {
     items = findItems(block, selector);

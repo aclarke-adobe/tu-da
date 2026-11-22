@@ -8,12 +8,14 @@
     "hasGrid": false,
     "imagePattern": "noimg",
     "structure": "list",
-    "purpose": "dated list of ASX releases with a client-side pager (Previous, page numbers, Next) and a \"Showing x–y of N\" count"
+    "purpose": "dated list of ASX releases with a pager (Previous, page numbers, Next) and a \"Showing x–y of N\" count; optionally a live yourir ASX announcements feed with server-side paging and filtering"
   },
   "contentPattern": {
-    "structure": "optional first row: Page size | number (default 10); then one row per release: date cell (plain text, e.g. 19 November 2026) | title cell (link, or plain text)",
+    "structure": "optional config rows (key cell, case-insensitive): Page size | number (default 10, 15 in feed mode); Feed | yourir symbol (e.g. tcl.asx); App ID | yourir app ID. Feed + App ID together switch on feed mode. Then one row per release: date cell (plain text, e.g. 19 November 2026) | title cell (link, or plain text); in feed mode these rows are the initial render and the fallback",
     "fields": [
       "page-size",
+      "feed",
+      "app-id",
       "date",
       "title"
     ]
