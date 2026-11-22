@@ -11,6 +11,10 @@ export default function decorate(block) {
   const cols = firstRow ? firstRow.children.length : 0;
   block.classList.add(`columns-media-${cols}-cols`);
 
+  // Document Authoring stores list items holding an image as paragraphs
+  // (<li><p><picture></p><p>text</p></li>): unwrap them back to <li><picture>text</li>
+  block.querySelectorAll('li > p').forEach((p) => p.replaceWith(...p.childNodes));
+
   [...block.children].forEach((row) => {
     row.classList.add('columns-media-row');
     [...row.children].forEach((col) => {

@@ -219,6 +219,11 @@ function buildBreadcrumbs(main) {
 
 // eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
+  // published pages keep an empty section where the page metadata block was: drop it so it
+  // doesn't add section padding above the footer
+  main.querySelectorAll(':scope > div').forEach((section) => {
+    if (!section.children.length && !section.textContent.trim()) section.remove();
+  });
   decorateIcons(main);
   buildAutoBlocks(main);
   buildBreadcrumbs(main);

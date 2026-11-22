@@ -66,6 +66,10 @@ export default async function decorate(block) {
   inner.setAttribute('aria-label', 'Site notice');
 
   if (iconCell) {
+    // keep only the icon: on published pages the icon arrives already converted and
+    // gets wrapped in a <p> (with its margins) before the block runs
+    const icon = iconCell.querySelector('.icon, picture, img');
+    iconCell.replaceChildren(icon);
     iconCell.className = 'alert-banner-icon';
     inner.append(iconCell);
     const iconImg = iconCell.querySelector('.icon img[src$=".svg"]');

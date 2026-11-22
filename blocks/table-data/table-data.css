@@ -34,6 +34,17 @@
   margin-bottom: 0;
 }
 
+/* an icon line above the cell text (authored "icon <br> label"; Document Authoring stores it
+   as two paragraphs): keep the label right under the icon */
+.table-data :is(th, td) > p:has(> picture:only-child) {
+  margin-bottom: 0;
+  line-height: 0;
+}
+
+.table-data :is(th, td) > p:has(> picture:only-child) + p {
+  margin-top: 0;
+}
+
 /* source: links in cells are regular weight (global `main p > a` sets 600) */
 main .table-data a:any-link {
   font-weight: var(--body-font-weight);
