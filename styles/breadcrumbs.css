@@ -1,0 +1,47 @@
+/* breadcrumbs (built from the page's Breadcrumbs metadata in scripts/scripts.js) */
+main > nav.breadcrumbs {
+  margin: 15px 0 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-color, #e5e5e5);
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--text-color);
+}
+
+main > nav.breadcrumbs ol {
+  box-sizing: border-box;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 var(--content-padding);
+  list-style: none;
+}
+
+main > nav.breadcrumbs li {
+  display: inline-block;
+  position: relative;
+  margin: 0 7px 0 0;
+}
+
+main > nav.breadcrumbs li + li {
+  padding-left: 17px;
+}
+
+main > nav.breadcrumbs li + li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 10px;
+  height: 12px;
+  background: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2020%2020%22%3E%3Cpath%20d%3D%22M12.5%2010.6c.1-.1.2-.2.2-.4%200-.1-.1-.3-.2-.4L8.2%205.5c-.2-.2-.5-.2-.7%200s-.2.5%200%20.8l3.9%203.9-3.9%203.9c-.2.2-.2.6%200%20.8.2.2.6.2.8%200l4.2-4.3z%22%20fill%3D%22%23a0a0a0%22%2F%3E%3C%2Fsvg%3E") no-repeat -5px -4px / 20px 20px;
+}
+
+main > nav.breadcrumbs a:any-link {
+  color: var(--text-color);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+main > nav.breadcrumbs a:hover {
+  text-decoration: underline;
+}

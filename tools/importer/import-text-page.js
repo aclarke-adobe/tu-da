@@ -200,7 +200,11 @@ export default {
     executeTransformers('afterTransform', main, payload);
 
     main.appendChild(document.createElement('hr'));
-    WebImporter.rules.createMetadata(main, document);
+    // Page metadata: the importer defaults (title, description, image) plus the source
+    // breadcrumb trail the cleanup transformer kept in params.breadcrumbs.
+    const meta = WebImporter.Blocks.getMetadata(document);
+    if (params.breadcrumbs) meta.Breadcrumbs = params.breadcrumbs;
+    if (Object.keys(meta).length) main.append(WebImporter.Blocks.getMetadataBlock(document, meta));
     WebImporter.rules.transformBackgroundImages(main, document);
     WebImporter.rules.adjustImageUrls(main, url, params.originalURL);
     // No WebImporter.rules.convertIcons here: .svg images stay <img> (see the SVG note above).

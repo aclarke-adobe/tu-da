@@ -13,6 +13,7 @@ import {
   readBlockConfig,
   toCamelCase,
   toClassName,
+  getMetadata,
 } from './aem.js';
 
 if (window.trustedTypes && window.trustedTypes.createPolicy) {
@@ -175,10 +176,52 @@ function decorateSectionMetadata(main) {
   });
 }
 
+/**
+ * Builds the breadcrumb trail from the page's `Breadcrumbs` metadata ("About > Board of
+ * directors > Craig Drummond"). Each label links to the matching folder of the page URL
+ * (the first label to the first folder, and so on); the last label is the current page.
+ * Pages without the metadata get no breadcrumbs.
+ * @param {Element} main The main element
+ */
+function buildBreadcrumbs(main) {
+  // decorateMain also runs on fragments: only the page's own <main> gets breadcrumbs
+  if (main !== document.querySelector('body > main')) return;
+  const value = getMetadata('breadcrumbs');
+  if (!value) return;
+  const labels = value.split('>').map((l) => l.trim()).filter(Boolean);
+  if (!labels.length) return;
+  // the local migration preview serves pages under /content
+  const prefix = window.location.pathname.startsWith('/content/') ? '/content' : '';
+  const segments = window.location.pathname.slice(prefix.length).split('/').filter(Boolean);
+
+  const nav = document.createElement('nav');
+  nav.className = 'breadcrumbs';
+  nav.setAttribute('aria-label', 'Breadcrumb');
+  const ol = document.createElement('ol');
+  labels.forEach((label, i) => {
+    const li = document.createElement('li');
+    const last = i === labels.length - 1;
+    if (last || i >= segments.length) {
+      li.textContent = label;
+      if (last) li.setAttribute('aria-current', 'page');
+    } else {
+      const a = document.createElement('a');
+      a.href = `${prefix}/${segments.slice(0, i + 1).join('/')}`;
+      a.textContent = label;
+      li.append(a);
+    }
+    ol.append(li);
+  });
+  nav.append(ol);
+  main.prepend(nav);
+  loadCSS(`${window.hlx.codeBasePath}/styles/breadcrumbs.css`);
+}
+
 // eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
   decorateIcons(main);
   buildAutoBlocks(main);
+  buildBreadcrumbs(main);
   decorateSections(main);
   decorateSectionMetadata(main);
   decorateBlocks(main);

@@ -315,6 +315,15 @@ export default function transform(hookName, element, payload) {
     applyCatalogRules(element, template, pagePath);
   }
   if (hookName === 'afterTransform') {
+    // Keep the page's breadcrumb trail (labels only; each link is the matching URL folder)
+    // for the import script to add as `Breadcrumbs` page metadata, before chrome removal
+    // drops the source breadcrumbs. Pages without a trail, or with empty labels, get none.
+    const params = payload && payload.params;
+    if (params && params.breadcrumbs === undefined) {
+      const labels = safeQueryAll(element, '.breadcrumbs li')
+        .map((li) => li.textContent.replace(/\s+/g, ' ').trim());
+      params.breadcrumbs = labels.length && labels.every(Boolean) ? labels.join(' > ') : null;
+    }
     removeChrome(element);
     stripTrackingAttributes(element);
     normalizeInternalLinks(element);
