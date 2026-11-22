@@ -71,6 +71,9 @@ function decorateSections(nav, sections) {
   const list = sections.querySelector('ul');
   if (!list) return;
   list.classList.add('nav-list');
+  // Document Authoring wraps the label of a list item that has a sub-list in a <p>
+  // (<li><p><a>About</a></p><ul>…): unwrap it so the item reads <li><a>…</a><ul>…
+  list.querySelectorAll('li > p').forEach((p) => p.replaceWith(...p.childNodes));
   [...list.children].forEach((item) => {
     item.classList.add('nav-item');
     const trigger = item.querySelector(':scope > a');
