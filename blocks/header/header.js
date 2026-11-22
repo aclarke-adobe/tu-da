@@ -4,13 +4,14 @@ const isDesktop = window.matchMedia('(width >= 1200px)');
 const SECTION_NAMES = ['utility', 'brand', 'sections', 'tools'];
 
 /**
- * Fetches the nav fragment. Local preview serves content under /content,
- * DA/EDS serves it from the site root.
+ * Fetches the nav fragment from the site root. Only a page served under /content
+ * (the local migration preview) looks for it under /content first.
  * @returns {Promise<{html: string, base: string}|null>}
  */
 async function fetchNav() {
-  let resp = await fetch('/content/nav.plain.html');
-  if (!resp.ok) resp = await fetch('/nav.plain.html');
+  let resp = null;
+  if (window.location.pathname.startsWith('/content/')) resp = await fetch('/content/nav.plain.html');
+  if (!resp || !resp.ok) resp = await fetch('/nav.plain.html');
   if (!resp.ok) return null;
   return { html: await resp.text(), base: resp.url };
 }

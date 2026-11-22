@@ -1,7 +1,7 @@
 /*
  * Footer block
- * Reads the footer fragment (content/footer.plain.html locally, /footer.plain.html
- * on DA/EDS) and lays it out. All copy, links and images come from the fragment;
+ * Reads the footer fragment (/footer.plain.html; /content/footer.plain.html in the
+ * local preview) and lays it out. All copy, links and images come from the fragment;
  * each top-level section is classified by its content:
  *   social  - a list whose links contain only images
  *   quote   - a share price (a price paragraph and/or a .json data link)
@@ -13,13 +13,14 @@ import { fetchJson, normaliseQuote, takeDataSource } from '../../scripts/share-p
 const PRICE_PATTERN = /^\$?\s*\d[\d,]*(\.\d+)?$/;
 
 /**
- * Fetch the footer fragment. Metadata-independent: /content first (local
- * preview), then the site root (DA/EDS).
+ * Fetch the footer fragment from the site root. Only a page served under
+ * /content (the local migration preview) looks for it under /content first.
  * @returns {Promise<Document|null>}
  */
 async function fetchFooterFragment() {
-  let resp = await fetch('/content/footer.plain.html');
-  if (!resp.ok) resp = await fetch('/footer.plain.html');
+  let resp = null;
+  if (window.location.pathname.startsWith('/content/')) resp = await fetch('/content/footer.plain.html');
+  if (!resp || !resp.ok) resp = await fetch('/footer.plain.html');
   if (!resp.ok) return null;
   const doc = new DOMParser().parseFromString(await resp.text(), 'text/html');
   // resolve relative media against the fragment URL, not the current page
