@@ -1,27 +1,131 @@
+/*
+ * Profile tile grid (source: .feature-tile--board on transurban.com).
+ * One column below 1024px, four 20px-gutter columns from 1024px (source grid__column--width-1-4).
+ * Cards with long bios (heading followed by two or more paragraphs) use two columns
+ * (source grid__column--width-2-4 on /investor-centre/investor-day-2023).
+ */
 .cards > ul {
-  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px 20px;
   margin: 0;
   padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
-  gap: 24px;
+  list-style: none;
 }
 
 .cards > ul > li {
-  border: 1px solid #dadada;
-  background-color: var(--background-color);
-}
-
-.cards .cards-card-body {
-  margin: 16px;
+  position: relative;
+  border: 1px solid var(--brand-grey-border);
+  color: #333;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .cards .cards-card-image {
+  height: 185px;
+  overflow: hidden;
   line-height: 0;
 }
 
-.cards > ul > li img {
+.cards .cards-card-image picture {
+  display: block;
+  height: 100%;
+}
+
+.cards .cards-card-image img {
+  display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  height: 185px;
   object-fit: cover;
+  object-position: 50% 50%;
+}
+
+/* source content: 40px 30px padding plus the 10px empty date line above the title */
+.cards .cards-card-body {
+  padding: 50px 30px 40px;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.cards .cards-card-body > :first-child {
+  margin-top: 0;
+}
+
+.cards .cards-card-body > :last-child {
+  margin-bottom: 0;
+}
+
+.cards .cards-card-body h3 {
+  margin: 0 0 20px;
+  color: #333;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  transition: color 250ms;
+}
+
+.cards .cards-card-body h3 a:any-link {
+  color: inherit;
+  font-weight: inherit;
+  text-decoration: none;
+  transition: none;
+}
+
+/* whole card is clickable when the name links to a profile */
+.cards .cards-card-body h3 a:any-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.cards .cards-card-body p {
+  margin: 14px 0;
+}
+
+.cards .cards-card-body h3 + p {
+  margin-top: 0;
+}
+
+/* text-only card (e.g. Company Secretary): grey panel, no border, 16px copy */
+.cards > ul > li:not(:has(.cards-card-image)) {
+  grid-column-start: 1;
+  align-self: start;
+  border: 0;
+  background-color: #e8e6e1;
+}
+
+.cards > ul > li:not(:has(.cards-card-image)) .cards-card-body {
+  padding: 29px 20px;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+/*
+ * bio cards: the source name is a bold 14px line below the empty title slot (60px from the
+ * card body top) and the bio ends with an empty 14px paragraph margin
+ */
+.cards:has(.cards-card-body > h3 ~ p ~ p) .cards-card-body {
+  padding-bottom: 54px;
+}
+
+.cards:has(.cards-card-body > h3 ~ p ~ p) .cards-card-body h3 {
+  margin: 10px 0 14px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+}
+
+.cards > ul > li:has(h3 a:any-link):hover h3,
+.cards > ul > li:has(h3 a:any-link) h3:focus-within {
+  color: var(--brand-green);
+}
+
+@media (width >= 1024px) {
+  .cards > ul {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .cards:has(.cards-card-body > h3 ~ p ~ p) > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

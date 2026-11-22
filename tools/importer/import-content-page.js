@@ -17,6 +17,7 @@ import sharePriceChartParser from './parsers/share-price-chart.js';
 import sharePriceQuoteParser from './parsers/share-price-quote.js';
 import formParser from './parsers/form.js';
 import articleShareTagsParser from './parsers/article-share-tags.js';
+import cardsParser from './parsers/cards.js';
 import transurbanCleanupTransformer from './transformers/transurban-cleanup.js';
 import transurbanSectionsTransformer from './transformers/transurban-sections.js';
 
@@ -67,6 +68,12 @@ const PAGE_TEMPLATE = {
   ],
   "description": "Breadcrumb and page-title content page with body copy, profile or card grids and media columns",
   "blocks": [
+    {
+      "name": "cards",
+      "instances": [
+        "#main > div > div.richContentContainer:has(.feature-tile--board)"
+      ]
+    },
     {
       "name": "hero-banner",
       "instances": [
@@ -345,7 +352,8 @@ const PAGE_TEMPLATE = {
         "share-price-chart",
         "share-price-quote",
         "form",
-        "article-share-tags"
+        "article-share-tags",
+        "cards"
       ],
       "defaultContent": [
         "#main > div > div.richContentContainer",
@@ -525,6 +533,7 @@ const PAGE_TEMPLATE = {
 };
 
 const parsers = {
+  'cards': cardsParser,
   'hero-banner': heroBannerParser,
   'accordion': accordionParser,
   'embed-video': embedVideoParser,

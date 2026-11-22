@@ -18,6 +18,7 @@ import testimonialParser from './parsers/testimonial.js';
 import columnsMediaParser from './parsers/columns-media.js';
 import columnsParser from './parsers/columns.js';
 import socialShareParser from './parsers/social-share.js';
+import cardsParser from './parsers/cards.js';
 import transurbanCleanupTransformer from './transformers/transurban-cleanup.js';
 import transurbanSectionsTransformer from './transformers/transurban-sections.js';
 
@@ -83,6 +84,12 @@ const PAGE_TEMPLATE = {
   ],
   "description": "Section landing page opening with a hero banner, followed by stacked columns, card grids and call-to-action bands",
   "blocks": [
+    {
+      "name": "cards",
+      "instances": [
+        "#main > div > div.richContentContainer:has(.feature-tile--board)"
+      ]
+    },
     {
       "name": "hero-banner",
       "instances": [
@@ -582,7 +589,8 @@ const PAGE_TEMPLATE = {
         "testimonial",
         "columns-media",
         "columns",
-        "social-share"
+        "social-share",
+        "cards"
       ],
       "defaultContent": [
         "#main > div > div.richContentContainer",
@@ -827,6 +835,7 @@ const PAGE_TEMPLATE = {
 };
 
 const parsers = {
+  'cards': cardsParser,
   'hero-banner': heroBannerParser,
   'accordion': accordionParser,
   'embed-video': embedVideoParser,

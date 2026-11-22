@@ -147,6 +147,12 @@
       "description": "Section landing page opening with a hero banner, followed by stacked columns, card grids and call-to-action bands",
       "blocks": [
         {
+          "name": "cards",
+          "instances": [
+            "#main > div > div.richContentContainer:has(.feature-tile--board)"
+          ]
+        },
+        {
           "name": "hero-banner",
           "instances": [
             "#main > div > div.banner",
@@ -645,7 +651,8 @@
             "testimonial",
             "columns-media",
             "columns",
-            "social-share"
+            "social-share",
+            "cards"
           ],
           "defaultContent": [
             "#main > div > div.richContentContainer",
@@ -936,6 +943,12 @@
       "description": "Breadcrumb and page-title content page with body copy, profile or card grids and media columns",
       "blocks": [
         {
+          "name": "cards",
+          "instances": [
+            "#main > div > div.richContentContainer:has(.feature-tile--board)"
+          ]
+        },
+        {
           "name": "hero-banner",
           "instances": [
             "#main > div > div.banner",
@@ -1213,7 +1226,8 @@
             "share-price-chart",
             "share-price-quote",
             "form",
-            "article-share-tags"
+            "article-share-tags",
+            "cards"
           ],
           "defaultContent": [
             "#main > div > div.richContentContainer",
