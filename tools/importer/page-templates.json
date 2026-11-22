@@ -42,6 +42,13 @@
               "#main > div > div:nth-child(5)"
             ]
           }
+        },
+        {
+          "name": "cards-news",
+          "instances": [
+            "#main > div > div.richContentContainer:has(.feature-tile--news)",
+            ".filtercontent"
+          ]
         }
       ],
       "sections": [
@@ -67,7 +74,8 @@
           "style": null,
           "blocks": [
             "hero-banner",
-            "cards-icon"
+            "cards-icon",
+            "cards-news"
           ],
           "defaultContent": [
             "#main > div > div.richContentContainer",
@@ -611,6 +619,13 @@
               "#main > div > div:nth-child(9) > div > div > div > div > div > div > div > div > div > div > div > div"
             ]
           }
+        },
+        {
+          "name": "cards-news",
+          "instances": [
+            "#main > div > div.richContentContainer:has(.feature-tile--news)",
+            ".filtercontent"
+          ]
         }
       ],
       "sections": [
@@ -652,7 +667,8 @@
             "columns-media",
             "columns",
             "social-share",
-            "cards"
+            "cards",
+            "cards-news"
           ],
           "defaultContent": [
             "#main > div > div.richContentContainer",
@@ -1193,6 +1209,13 @@
           "instances": [
             ".module--asx-releases .asx-releases__list_container"
           ]
+        },
+        {
+          "name": "cards-news",
+          "instances": [
+            "#main > div > div.richContentContainer:has(.feature-tile--news)",
+            ".filtercontent"
+          ]
         }
       ],
       "sections": [
@@ -1234,7 +1257,8 @@
             "form",
             "article-share-tags",
             "cards",
-            "releases-list"
+            "releases-list",
+            "cards-news"
           ],
           "defaultContent": [
             "#main > div > div.richContentContainer",

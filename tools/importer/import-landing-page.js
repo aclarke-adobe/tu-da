@@ -19,6 +19,7 @@ import columnsMediaParser from './parsers/columns-media.js';
 import columnsParser from './parsers/columns.js';
 import socialShareParser from './parsers/social-share.js';
 import cardsParser from './parsers/cards.js';
+import cardsNewsParser from './parsers/cards-news.js';
 import transurbanCleanupTransformer from './transformers/transurban-cleanup.js';
 import transurbanSectionsTransformer from './transformers/transurban-sections.js';
 
@@ -549,6 +550,13 @@ const PAGE_TEMPLATE = {
           "#main > div > div:nth-child(9) > div > div > div > div > div > div > div > div > div > div > div > div"
         ]
       }
+    },
+    {
+      "name": "cards-news",
+      "instances": [
+        "#main > div > div.richContentContainer:has(.feature-tile--news)",
+        ".filtercontent"
+      ]
     }
   ],
   "sections": [
@@ -590,7 +598,8 @@ const PAGE_TEMPLATE = {
         "columns-media",
         "columns",
         "social-share",
-        "cards"
+        "cards",
+        "cards-news"
       ],
       "defaultContent": [
         "#main > div > div.richContentContainer",
@@ -835,6 +844,7 @@ const PAGE_TEMPLATE = {
 };
 
 const parsers = {
+  'cards-news': cardsNewsParser,
   'cards': cardsParser,
   'hero-banner': heroBannerParser,
   'accordion': accordionParser,

@@ -19,6 +19,7 @@ import formParser from './parsers/form.js';
 import articleShareTagsParser from './parsers/article-share-tags.js';
 import cardsParser from './parsers/cards.js';
 import releasesListParser from './parsers/releases-list.js';
+import cardsNewsParser from './parsers/cards-news.js';
 import transurbanCleanupTransformer from './transformers/transurban-cleanup.js';
 import transurbanSectionsTransformer from './transformers/transurban-sections.js';
 
@@ -320,6 +321,13 @@ const PAGE_TEMPLATE = {
       "instances": [
         ".module--asx-releases .asx-releases__list_container"
       ]
+    },
+    {
+      "name": "cards-news",
+      "instances": [
+        "#main > div > div.richContentContainer:has(.feature-tile--news)",
+        ".filtercontent"
+      ]
     }
   ],
   "sections": [
@@ -361,7 +369,8 @@ const PAGE_TEMPLATE = {
         "form",
         "article-share-tags",
         "cards",
-        "releases-list"
+        "releases-list",
+        "cards-news"
       ],
       "defaultContent": [
         "#main > div > div.richContentContainer",
@@ -541,6 +550,7 @@ const PAGE_TEMPLATE = {
 };
 
 const parsers = {
+  'cards-news': cardsNewsParser,
   'releases-list': releasesListParser,
   'cards': cardsParser,
   'hero-banner': heroBannerParser,

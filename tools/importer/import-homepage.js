@@ -7,6 +7,7 @@
 import alertBannerParser from './parsers/alert-banner.js';
 import heroBannerParser from './parsers/hero-banner.js';
 import cardsIconParser from './parsers/cards-icon.js';
+import cardsNewsParser from './parsers/cards-news.js';
 import transurbanCleanupTransformer from './transformers/transurban-cleanup.js';
 import transurbanSectionsTransformer from './transformers/transurban-sections.js';
 
@@ -52,6 +53,13 @@ const PAGE_TEMPLATE = {
           "#main > div > div:nth-child(5)"
         ]
       }
+    },
+    {
+      "name": "cards-news",
+      "instances": [
+        "#main > div > div.richContentContainer:has(.feature-tile--news)",
+        ".filtercontent"
+      ]
     }
   ],
   "sections": [
@@ -77,7 +85,8 @@ const PAGE_TEMPLATE = {
       "style": null,
       "blocks": [
         "hero-banner",
-        "cards-icon"
+        "cards-icon",
+        "cards-news"
       ],
       "defaultContent": [
         "#main > div > div.richContentContainer",
@@ -96,6 +105,7 @@ const PAGE_TEMPLATE = {
 };
 
 const parsers = {
+  'cards-news': cardsNewsParser,
   'alert-banner': alertBannerParser,
   'hero-banner': heroBannerParser,
   'cards-icon': cardsIconParser,

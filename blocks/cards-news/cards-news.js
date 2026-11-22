@@ -46,7 +46,20 @@ function linkCard(li) {
   primary.classList.add('cards-news-card-link');
 }
 
+/*
+ * Related-news lists (the source article filter on news articles) fade the
+ * excerpt out; featured news elsewhere shows it in full. Authors can set the
+ * `related` or `featured` variant; otherwise news and archive articles get
+ * the related look.
+ */
+function isRelatedList(block) {
+  if (block.classList.contains('featured')) return false;
+  if (block.classList.contains('related')) return true;
+  return /\/(news|archive)\/[^/]+/.test(window.location.pathname);
+}
+
 export default function decorate(block) {
+  block.classList.toggle('related', isRelatedList(block));
   const ul = document.createElement('ul');
 
   [...block.children].forEach((row) => {

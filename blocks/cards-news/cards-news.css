@@ -1,11 +1,19 @@
-/* source: migration-work/design/cards-news (feature-tile--news tiles) */
+/*
+ * source: feature-tile--news tiles, measured at 1280px and 375px.
+ * Two source lists use this block:
+ * - related news on news articles (article-filter): excerpt cut at 150 characters
+ *   and faded out by a 100px white gradient at the bottom of the tile, 3 columns,
+ *   tiles capped at 445px (desktop). JS adds `.related` for these.
+ * - featured news (homepage, partners, kidsafe ...): full excerpt, no fade, one
+ *   column per tile (2, 3 or 4).
+ */
 .cards-news {
   color: var(--text-color);
 }
 
 .cards-news > ul {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 15px;
   margin: 0;
   padding: 0;
@@ -17,7 +25,6 @@
   flex-direction: column;
   position: relative;
   min-width: 0;
-  background-color: var(--background-color);
 }
 
 .cards-news .cards-news-card:not(:has(> a.cards-news-card-link)),
@@ -56,7 +63,7 @@
 
 .cards-news .cards-news-card-body {
   flex: 1 1 auto;
-  padding: 40px 30px 60px;
+  padding: 40px 30px;
 }
 
 .cards-news .cards-news-card-body > :first-child {
@@ -68,10 +75,10 @@
 }
 
 .cards-news .cards-news-card-date {
-  margin: 0 0 9px;
-  color: #555;
+  margin: 0 0 10px;
+  color: #535e5f;
   font-size: 13px;
-  line-height: 21px;
+  line-height: 19.5px;
 }
 
 .cards-news .cards-news-card-body :is(h2, h3, h4) {
@@ -80,6 +87,7 @@
   font-size: 18px;
   font-weight: 600;
   line-height: 27px;
+  transition: color 250ms;
 }
 
 .cards-news .cards-news-card-body :is(h2, h3, h4) a:any-link {
@@ -89,18 +97,15 @@
 }
 
 .cards-news .cards-news-card-body p:not(.cards-news-card-date) {
-  display: -webkit-box;
-  overflow: hidden;
   margin: 0;
   font-size: 14px;
   line-height: 21px;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
 }
 
-.cards-news a.cards-news-card-link:hover :is(h2, h3, h4),
-.cards-news a.cards-news-card-link:focus-visible :is(h2, h3, h4) {
-  text-decoration: underline;
+/* source hover: only the headline turns green */
+.cards-news a.cards-news-card-link:is(:hover, :focus-visible) :is(h2, h3, h4),
+.cards-news .cards-news-card-linked:has(.cards-news-card-link:is(:hover, :focus-visible)) :is(h2, h3, h4) {
+  color: var(--brand-green);
 }
 
 /* fallback: headline link stretched over a card with several links */
@@ -110,13 +115,49 @@
   inset: 0;
 }
 
-@media (width >= 900px) {
+/* related news: 100px white fade over the bottom of the tile (source .fade-effect) */
+.cards-news.related .cards-news-card > a.cards-news-card-link::after,
+.cards-news.related .cards-news-card-linked::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100px;
+  background-image: linear-gradient(rgb(255 255 255 / 0%), var(--background-color) 40%, var(--background-color) 100%);
+  pointer-events: none;
+}
+
+/* heading right above the list: source h3, 24px/36px (20px/30px mobile), 25px to the tiles */
+main .default-content-wrapper:has(+ .cards-news-wrapper) > :is(h2, h3):last-child:not(:has(a)) {
+  font-size: var(--heading-font-size-l);
+  line-height: var(--heading-line-height-l);
+
+  /* collapses with the 40px gap between section children, leaving 25px */
+  margin-bottom: calc(25px - var(--section-padding));
+}
+
+/* related news on articles: the source sets the list well apart from the article (120px) */
+main .default-content-wrapper:has(+ .cards-news-wrapper .cards-news.related) > :is(h2, h3):last-child:not(:has(a), :first-child) {
+  margin-top: 120px;
+}
+
+@media (width >= 1024px) {
   .cards-news > ul {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 20px;
+    gap: 15px 20px;
   }
 
-  .cards-news .cards-news-card-body p:not(.cards-news-card-date) {
-    -webkit-line-clamp: 2;
+  .cards-news:not(.related) > ul:has(> li:nth-child(2):last-child) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cards-news:not(.related) > ul:has(> li:nth-child(4):last-child) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .cards-news.related .cards-news-card {
+    max-height: 445px;
+    overflow: hidden;
   }
 }
