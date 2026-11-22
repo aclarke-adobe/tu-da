@@ -8,7 +8,8 @@
  * Block table (blocks/table-data/table-data.js): one row per table row, one
  * cell per column (first row is the header row). Rows of every table in the
  * container are kept in document order; cells keep links, images and inline
- * formatting. Option `header` when the source table has <th> cells or a <thead>.
+ * formatting. Option `header` when the source table has <th> cells or a <thead>;
+ * option `wide` when the source table spans the full content width.
  */
 
 function cleanCell(document, td) {
@@ -60,7 +61,11 @@ export default function parse(element, { document }) {
     return;
   }
 
-  const name = hasHeaderCells ? 'table-data (header)' : 'table-data';
+  // option `wide`: the source sets the table in a full-width rich text (.rich-text--full-width,
+  // e.g. the NSW toll-reform tables) instead of the 800px text column
+  const wide = !!(element.closest('.rich-text--full-width') || element.querySelector('.rich-text--full-width'));
+  const options = [hasHeaderCells && 'header', wide && 'wide'].filter(Boolean);
+  const name = options.length ? `table-data (${options.join(', ')})` : 'table-data';
   const block = WebImporter.Blocks.createBlock(document, { name, cells });
   element.replaceWith(block);
 }

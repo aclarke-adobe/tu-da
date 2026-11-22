@@ -456,3 +456,62 @@ main > .section.section-nav ul > li {
   padding: 8px 0;
   border-bottom: 1px solid var(--border-color, #e5e5e5);
 }
+
+/* profile band (board / executive pages; class set by scripts.js decorateProfileBands):
+   source .module--flat-top/--flat-bottom on #e1ddda. Name 55px below the band top, role
+   14px under it, a 200px portrait flush with the band bottom. Stacked below 1024px; from
+   1024px name and role sit in the first quarter and the portrait is centred in the middle half. */
+main > .section.profile {
+  padding: 15px 0 0;
+  background-color: #e1ddda;
+}
+
+main > .section.profile .default-content-wrapper > :is(h1, h2, h3) {
+  margin: 40px 0 0;
+  color: #000;
+  font-size: var(--heading-font-size-xl);
+  font-weight: 600;
+  line-height: 30px;
+}
+
+main > .section.profile .default-content-wrapper > p {
+  margin: 14px 0 0;
+  color: #333;
+}
+
+main > .section.profile .default-content-wrapper > p:last-child {
+  margin: 15px 0 0;
+  line-height: 0;
+  text-align: center;
+}
+
+main > .section.profile .default-content-wrapper > p:last-child img {
+  width: 200px;
+  height: auto;
+}
+
+@media (width >= 1024px) {
+  main > .section.profile .default-content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+
+    /* name + up to two role lines; the spare height (portrait taller than the text) goes last */
+    grid-template-rows: auto auto auto 1fr;
+    column-gap: 20px;
+  }
+
+  main > .section.profile .default-content-wrapper > * {
+    grid-column: 1;
+  }
+
+  main > .section.profile .default-content-wrapper > :is(h1, h2, h3) {
+    line-height: 40px;
+  }
+
+  main > .section.profile .default-content-wrapper > p:last-child {
+    grid-column: 2;
+    grid-row: 1 / -1;
+    align-self: end;
+    margin: 0;
+  }
+}

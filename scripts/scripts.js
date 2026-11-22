@@ -217,6 +217,27 @@ function buildBreadcrumbs(main) {
   loadCSS(`${window.hlx.codeBasePath}/styles/breadcrumbs.css`);
 }
 
+/**
+ * Marks profile bands (board and executive pages): a section holding only a name heading,
+ * one or more role paragraphs and a paragraph with just a portrait. The `profile` class
+ * lays them out like the source (name and role on the left, a 200px portrait beside them).
+ * Authors can also set it explicitly with the section Style `profile`.
+ * @param {Element} main The main element
+ */
+function decorateProfileBands(main) {
+  main.querySelectorAll(':scope > .section').forEach((section) => {
+    if (section.children.length !== 1) return;
+    const wrapper = section.querySelector(':scope > .default-content-wrapper');
+    const kids = wrapper ? [...wrapper.children] : [];
+    if (kids.length < 3 || !/^H[1-3]$/.test(kids[0].tagName)) return;
+    const last = kids[kids.length - 1];
+    const isPortrait = last.tagName === 'P' && last.querySelector(':scope > picture')
+      && last.children.length === 1 && !last.textContent.trim();
+    const textOnly = kids.slice(1, -1).every((k) => k.tagName === 'P' && !k.querySelector('picture'));
+    if (isPortrait && textOnly) section.classList.add('profile');
+  });
+}
+
 // eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
   // published pages keep an empty section where the page metadata block was: drop it so it
@@ -229,6 +250,7 @@ export function decorateMain(main) {
   buildBreadcrumbs(main);
   decorateSections(main);
   decorateSectionMetadata(main);
+  decorateProfileBands(main);
   decorateBlocks(main);
   decorateButtons(main);
 }

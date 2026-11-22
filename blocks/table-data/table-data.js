@@ -2,9 +2,32 @@
  * Table Data Block
  * Bordered data table. Each block row becomes a table row; the first row is
  * the header row unless it is the only row. Cells keep their rich content
- * (headings, links, line breaks). Option `dark`: dark header styling.
+ * (headings, links, line breaks). Option `dark`: dark header styling. Option `wide`: full
+ * content width with equal columns. An "icon <br> label" cell shows a 40px icon line.
  * The table scrolls horizontally on narrow screens.
  */
+
+/**
+ * "icon <br> label" in one paragraph (as imported) becomes an icon paragraph and a label
+ * paragraph, the same shape Document Authoring stores, so one set of styles covers both.
+ * @param {Element} cell
+ */
+function splitIconLine(cell) {
+  const only = cell.children.length === 1 && cell.firstElementChild.tagName === 'P';
+  const host = only ? cell.firstElementChild : cell;
+  const icon = host.firstElementChild;
+  if (!icon || !['PICTURE', 'IMG'].includes(icon.tagName)) return;
+  if (icon.previousSibling && icon.previousSibling.textContent.trim()) return;
+  const br = icon.nextElementSibling;
+  if (!br || br.tagName !== 'BR') return;
+  const iconP = document.createElement('p');
+  iconP.append(icon);
+  br.remove();
+  const labelP = document.createElement('p');
+  labelP.append(...host.childNodes);
+  if (only) host.replaceWith(iconP, labelP);
+  else cell.replaceChildren(iconP, labelP);
+}
 
 export default function decorate(block) {
   const rows = [...block.children];
@@ -12,6 +35,18 @@ export default function decorate(block) {
   const table = document.createElement('table');
   const maxCols = Math.max(...rows.map((r) => r.children.length));
   const hasHeader = rows.length > 1;
+  rows.forEach((row) => [...row.children].forEach(splitIconLine));
+
+  // wide: equal columns, like the source's full-width tables
+  if (block.classList.contains('wide') && maxCols > 1) {
+    const colgroup = document.createElement('colgroup');
+    for (let i = 0; i < maxCols; i += 1) {
+      const col = document.createElement('col');
+      col.style.width = `${(100 / maxCols).toFixed(3)}%`;
+      colgroup.append(col);
+    }
+    table.append(colgroup);
+  }
 
   let thead;
   if (hasHeader) {
