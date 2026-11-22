@@ -18,6 +18,7 @@ import sharePriceQuoteParser from './parsers/share-price-quote.js';
 import formParser from './parsers/form.js';
 import articleShareTagsParser from './parsers/article-share-tags.js';
 import cardsParser from './parsers/cards.js';
+import releasesListParser from './parsers/releases-list.js';
 import transurbanCleanupTransformer from './transformers/transurban-cleanup.js';
 import transurbanSectionsTransformer from './transformers/transurban-sections.js';
 
@@ -313,6 +314,12 @@ const PAGE_TEMPLATE = {
           "#main > div > div.filtercontent.aem-GridColumn.aem-GridColumn--default--12 > div > div > div.article-filter.fn_article-filter > div.article-filter__filters-container"
         ]
       }
+    },
+    {
+      "name": "releases-list",
+      "instances": [
+        ".module--asx-releases .asx-releases__list_container"
+      ]
     }
   ],
   "sections": [
@@ -353,7 +360,8 @@ const PAGE_TEMPLATE = {
         "share-price-quote",
         "form",
         "article-share-tags",
-        "cards"
+        "cards",
+        "releases-list"
       ],
       "defaultContent": [
         "#main > div > div.richContentContainer",
@@ -533,6 +541,7 @@ const PAGE_TEMPLATE = {
 };
 
 const parsers = {
+  'releases-list': releasesListParser,
   'cards': cardsParser,
   'hero-banner': heroBannerParser,
   'accordion': accordionParser,

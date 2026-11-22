@@ -1187,6 +1187,12 @@
               "#main > div > div.filtercontent.aem-GridColumn.aem-GridColumn--default--12 > div > div > div.article-filter.fn_article-filter > div.article-filter__filters-container"
             ]
           }
+        },
+        {
+          "name": "releases-list",
+          "instances": [
+            ".module--asx-releases .asx-releases__list_container"
+          ]
         }
       ],
       "sections": [
@@ -1227,7 +1233,8 @@
             "share-price-quote",
             "form",
             "article-share-tags",
-            "cards"
+            "cards",
+            "releases-list"
           ],
           "defaultContent": [
             "#main > div > div.richContentContainer",

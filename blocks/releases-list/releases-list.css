@@ -1,0 +1,164 @@
+/* source: .results-list (transurban.com/investor-centre/asx-releases) */
+.releases-list {
+  color: var(--text-color);
+  font-size: var(--body-font-size-m);
+  line-height: 24px;
+}
+
+.releases-list .releases-list-items {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  scroll-margin-top: 20px;
+}
+
+.releases-list .releases-list-items:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* source: .results-list__item - 20px vertical padding */
+.releases-list .releases-list-item {
+  display: block;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.releases-list .releases-list-item:first-child {
+  border-top: 1px solid var(--border-color);
+}
+
+/* paging and filtering both hide items */
+.releases-list .releases-list-item[hidden],
+.releases-list .releases-list-item.releases-list-off-page {
+  display: none;
+}
+
+/* source: .results-list__item__date - 13px/19.5px #535e5f */
+.releases-list .releases-list-date {
+  display: block;
+  color: #535e5f;
+  font-size: 13px;
+  line-height: 19.5px;
+}
+
+/* source: .results-list__item__title a - 16px/24px 600 #000 */
+.releases-list .releases-list-title {
+  color: var(--heading-color);
+  font-size: 16px;
+  font-weight: var(--link-font-weight);
+  line-height: 24px;
+  overflow-wrap: anywhere;
+}
+
+.releases-list .releases-list-title a:any-link {
+  color: var(--heading-color);
+  font-weight: var(--link-font-weight);
+  text-decoration: none;
+}
+
+.releases-list .releases-list-title a:hover,
+.releases-list .releases-list-title a:focus-visible {
+  color: var(--heading-color);
+  text-decoration: underline;
+}
+
+/* source: .text-small - 13px/20px #535e5f, 20px above */
+.releases-list .releases-list-count {
+  margin: 20px 0 0;
+  color: #535e5f;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+/* source: .results-list__pagination - 10px above, 20px below */
+.releases-list .releases-list-pager {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin: 10px 0 20px;
+}
+
+.releases-list .releases-list-pager[hidden] {
+  display: none;
+}
+
+.releases-list .releases-list-pager button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  line-height: 30px;
+  cursor: pointer;
+  transition: var(--link-transition);
+}
+
+.releases-list .releases-list-pager button:focus-visible {
+  outline: 2px solid var(--focus-ring-color);
+  outline-offset: 2px;
+}
+
+/* Previous / Next: text buttons with an 18px arrow, 10px gap */
+.releases-list .releases-list-prev,
+.releases-list .releases-list-next {
+  gap: 10px;
+  min-height: 44px;
+  padding: 7px 0;
+  font-weight: var(--body-font-weight);
+}
+
+.releases-list .releases-list-prev {
+  margin-right: 12px;
+}
+
+.releases-list .releases-list-next {
+  margin-left: 12px;
+}
+
+.releases-list .releases-list-prev:hover:not(:disabled) span,
+.releases-list .releases-list-next:hover:not(:disabled) span {
+  text-decoration: underline;
+}
+
+.releases-list .releases-list-pager button:disabled {
+  color: #666;
+  cursor: default;
+  opacity: 0.6;
+}
+
+.releases-list .releases-list-arrow {
+  flex: none;
+  width: 18px;
+  height: 18px;
+}
+
+/* page numbers: round buttons; current page filled brand green */
+.releases-list .releases-list-page {
+  min-width: 36px;
+  height: 36px;
+  padding: 0 8px;
+  border-radius: 18px;
+  font-weight: var(--body-font-weight);
+}
+
+.releases-list .releases-list-page:hover {
+  background-color: var(--brand-grey-hover);
+}
+
+.releases-list .releases-list-page[aria-current="page"] {
+  background-color: var(--brand-green);
+  color: #fff;
+  font-weight: 600;
+  cursor: default;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .releases-list .releases-list-pager button {
+    transition: none;
+  }
+}

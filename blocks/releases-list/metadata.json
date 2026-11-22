@@ -1,0 +1,30 @@
+{
+  "variantName": "releases-list",
+  "baseBlock": "custom",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "list",
+    "purpose": "dated list of ASX releases with a client-side pager (Previous, page numbers, Next) and a \"Showing x–y of N\" count"
+  },
+  "contentPattern": {
+    "structure": "optional first row: Page size | number (default 10); then one row per release: date cell (plain text, e.g. 19 November 2026) | title cell (link, or plain text)",
+    "fields": [
+      "page-size",
+      "date",
+      "title"
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "usage": {
+    "pagesFound": 1,
+    "sampleUrls": [
+      "https://www.transurban.com/investor-centre/asx-releases"
+    ]
+  },
+  "reuseGuidance": "Use for long dated lists of releases or announcements that need paging. Place directly after a releases-filter block in the same section to make it searchable; paging follows the filter."
+}
