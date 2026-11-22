@@ -1,0 +1,29 @@
+{
+  "variantName": "downloads",
+  "baseBlock": "custom",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "list",
+    "purpose": "list of downloadable documents (PDF/DOCX/XLSX) with title link and date"
+  },
+  "contentPattern": {
+    "structure": "one row per document: document link cell (link text = title) | date cell (plain text, optional)",
+    "fields": [
+      "link",
+      "date"
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "usage": {
+    "pagesFound": 1,
+    "sampleUrls": [
+      "https://www.transurban.com/investor-centre/distributions-and-tax/tax-guides"
+    ]
+  },
+  "reuseGuidance": "Use for lists of downloadable documents such as tax guides and reports. One row per document; the date cell may be left empty."
+}

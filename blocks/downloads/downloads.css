@@ -1,0 +1,59 @@
+/* source: tax-guides document list - 16px/24px #333, 14px item margins */
+.downloads {
+  color: var(--text-color);
+  font-size: var(--body-font-size-m);
+  line-height: 24px;
+}
+
+.downloads .downloads-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.downloads .downloads-item {
+  display: block;
+  margin: var(--paragraph-margin) 0;
+}
+
+.downloads .downloads-item:first-child {
+  margin-top: 0;
+}
+
+.downloads .downloads-item:last-child {
+  margin-bottom: 0;
+}
+
+/* link: brand green, 600, no underline; underline on hover/focus (global a rules) */
+.downloads a.downloads-link:any-link {
+  color: var(--link-color);
+  font-weight: var(--link-font-weight);
+  text-decoration: none;
+}
+
+.downloads a.downloads-link:hover,
+.downloads a.downloads-link:focus-visible,
+.downloads a.downloads-link:active {
+  color: var(--link-hover-color);
+  text-decoration: underline;
+}
+
+.downloads .downloads-title {
+  font-weight: var(--link-font-weight);
+}
+
+.downloads .downloads-date {
+  display: block;
+  color: var(--text-color);
+  font-weight: var(--body-font-weight);
+}
+
+/* visually hidden file-type hint for screen readers */
+.downloads .downloads-hint {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

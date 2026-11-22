@@ -343,5 +343,62 @@ export default function transform(hookName, element, payload) {
       if (p && !p.textContent.trim() && !p.querySelector('img, picture, iframe')) p.remove();
     });
     removeSpacerImages(element);
+    convertDownloadLists(element);
   }
+}
+
+// Download lists: 3 or more consecutive paragraphs that each hold one document link, a
+// line break and a date ("2026 Tax Return Guide<br>13 AUGUST 2026"), e.g. the tax guides and
+// reporting suite lists. They become a `downloads` block: one row per document, link | date.
+// Runs inside an existing block (a table at this stage) are left alone.
+const DOC_HREF = /\.(pdf|docx?|xlsx?|xlsm|csv|pptx?|zip|txt|rtf)(?=$|[?#])/i;
+const DATE_TEXT = /^\d{1,2}\s+[A-Za-z]{3,9}\s+\d{4}$/;
+
+function downloadItem(p) {
+  if (p.tagName !== 'P' || p.closest('table')) return null;
+  const links = p.querySelectorAll('a[href]');
+  if (links.length !== 1 || !DOC_HREF.test(links[0].getAttribute('href'))) return null;
+  const a = links[0];
+  if (a.parentElement !== p || !p.querySelector(':scope > br')) return null;
+  // the link comes before the line break and nothing else does; the date is the text after it
+  let before = '';
+  let after = '';
+  let seenBr = false;
+  [...p.childNodes].forEach((n) => {
+    if (n.nodeName === 'BR') seenBr = true;
+    else if (seenBr) after += n.textContent;
+    else if (n !== a) before += n.textContent;
+  });
+  const date = after.replace(/\s+/g, ' ').trim();
+  if (!DATE_TEXT.test(date) || before.trim()) return null;
+  return { a, date };
+}
+
+function convertDownloadLists(root) {
+  const doc = root.ownerDocument || root;
+  const parents = new Set(safeQueryAll(root, 'p').map((p) => p.parentElement));
+  parents.forEach((parent) => {
+    if (!parent || parent.closest('table')) return;
+    let run = [];
+    const flush = () => {
+      if (run.length >= 3) {
+        const cells = run.map(({ item }) => {
+          const link = doc.createElement('a');
+          link.href = item.a.getAttribute('href');
+          link.textContent = item.a.textContent.replace(/\s+/g, ' ').trim();
+          return [link, item.date];
+        });
+        const block = WebImporter.Blocks.createBlock(doc, { name: 'downloads', cells });
+        run[0].p.before(block);
+        run.forEach(({ p }) => p.remove());
+      }
+      run = [];
+    };
+    [...parent.children].forEach((child) => {
+      const item = downloadItem(child);
+      if (item) run.push({ p: child, item });
+      else flush();
+    });
+    flush();
+  });
 }
