@@ -1,0 +1,88 @@
+/* tab bar: values measured from the source tabs container (theme--white) */
+
+/* source .tabs-container closes with a 3px #dadada rule */
+.tabs-panels {
+  border-bottom: 3px solid #dadada;
+}
+
+.tabs-panels .tabs-panels-list {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.tabs-panels .tabs-panels-tab {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  margin: 0;
+  padding: 13px 5px 8px;
+  border: 0;
+  border-bottom: 3px solid #dadada;
+  border-radius: 0;
+  background: transparent;
+  color: #666;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-s);
+  font-weight: var(--link-font-weight);
+  line-height: 1.33;
+  text-align: center;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+  transition: var(--link-transition);
+}
+
+.tabs-panels .tabs-panels-tab:hover,
+.tabs-panels .tabs-panels-tab[aria-selected='true'] {
+  color: var(--text-color);
+}
+
+.tabs-panels .tabs-panels-tab[aria-selected='true'] {
+  position: relative;
+  border-bottom-color: var(--brand-green);
+}
+
+.tabs-panels .tabs-panels-panel {
+  padding: 25px 0 0;
+}
+
+/* inline panel content: source rich-text modules inset the copy inside the panel */
+.tabs-panels .tabs-panels-panel:not(.tabs-panels-panel-fragment) {
+  padding: 79px 73px 80px 37px;
+}
+
+.tabs-panels .tabs-panels-panel:not(.tabs-panels-panel-fragment) > * {
+  max-width: var(--text-max-width);
+}
+
+.tabs-panels .tabs-panels-panel:not(.tabs-panels-panel-fragment) > :last-child {
+  margin-bottom: 0;
+}
+
+.tabs-panels .tabs-panels-panel[aria-hidden='true'] {
+  display: none;
+}
+
+.tabs-panels .tabs-panels-panel > :first-child,
+.tabs-panels .tabs-panels-panel > .section:first-child > :first-child {
+  margin-top: 0;
+}
+
+/* light: the source "theme--white" tab bar, white behind the tabs */
+.tabs-panels.light .tabs-panels-list {
+  background: var(--background-color);
+}
+
+@media (width >= 900px) {
+  .tabs-panels .tabs-panels-tab {
+    padding-top: 12px;
+  }
+
+  .tabs-panels .tabs-panels-panel:not(.tabs-panels-panel-fragment) {
+    padding: 79px 0 80px 72px;
+  }
+}

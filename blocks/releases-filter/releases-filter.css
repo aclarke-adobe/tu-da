@@ -1,0 +1,104 @@
+/* source: .results-filter (transurban.com/investor-centre/asx-releases) */
+.releases-filter {
+  color: var(--text-color);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.releases-filter .releases-filter-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* source: .ctrl-holder; mobile stacks 50px fields 15px apart */
+.releases-filter .releases-filter-field {
+  margin-bottom: 15px;
+}
+
+.releases-filter .releases-filter-search,
+.releases-filter .releases-filter-select-wrap {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 12px 26px 12px 15px;
+  border: 1px solid #f6f6f6;
+  border-radius: 0;
+  background-color: #fff;
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.releases-filter .releases-filter-search {
+  appearance: none;
+  height: auto;
+}
+
+.releases-filter .releases-filter-search::placeholder {
+  color: #b1b0ad;
+  opacity: 1;
+}
+
+/* source: .simple-select, visible label with a transparent native select on top */
+.releases-filter .releases-filter-select-wrap {
+  position: relative;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='7' viewBox='0 0 13 7'%3E%3Cpath d='M1 .75l5.5 5 5.5-5' fill='none' stroke='%23a0a0a0' stroke-width='2'/%3E%3C/svg%3E");
+  background-position: right 14px center;
+  background-repeat: no-repeat;
+  background-size: 13px 7px;
+}
+
+.releases-filter .releases-filter-select-label {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.releases-filter .releases-filter-select {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0 15px;
+  border: 0;
+  opacity: 0;
+  cursor: pointer;
+  font: inherit;
+  appearance: none;
+}
+
+.releases-filter .releases-filter-search:focus,
+.releases-filter .releases-filter-select-wrap:focus-within {
+  outline: 2px solid var(--focus-ring-color);
+  outline-offset: -2px;
+}
+
+@media (width >= 900px) {
+  .releases-filter .releases-filter-form {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  /* source: ctrl-holder 383.5px wide incl. 20px right padding */
+  .releases-filter .releases-filter-field {
+    flex: 0 1 363.5px;
+    min-width: 0;
+    margin: 0 20px 0 0;
+  }
+
+  .releases-filter .releases-filter-search {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  .releases-filter .releases-filter-select-wrap {
+    padding-top: 17px;
+    padding-bottom: 17px;
+  }
+}

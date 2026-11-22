@@ -1,0 +1,35 @@
+{
+  "variantName": "embed-video",
+  "baseBlock": "embed",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "video",
+    "purpose": "single embedded YouTube or Vimeo video"
+  },
+  "contentPattern": {
+    "structure": "one cell: video link, optional poster image (click to play)",
+    "fields": [
+      "video link",
+      "poster"
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_d27270c3492d"
+  ],
+  "usage": {
+    "pagesFound": 87,
+    "sampleUrls": [
+      "https://www.transurban.com/about-us",
+      "https://www.transurban.com/archive/qrsw",
+      "https://www.transurban.com/campaigns/1h18-achievements",
+      "https://www.transurban.com/campaigns/behindthescenes",
+      "https://www.transurban.com/campaigns/choiceisyourssyd"
+    ]
+  },
+  "reuseGuidance": "Use for one inline video. For several captioned videos use cards-video."
+}

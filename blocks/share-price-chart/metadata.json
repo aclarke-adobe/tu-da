@@ -1,0 +1,40 @@
+{
+  "variantName": "share-price-chart",
+  "baseBlock": "custom",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "button",
+    "purpose": "interactive share price chart with range toggles"
+  },
+  "contentPattern": {
+    "structure": "key/value rows: Data | .json price series link; Ranges | list; Default | range; Title | text",
+    "fields": [
+      "data",
+      "ranges",
+      "default",
+      "title"
+    ]
+  },
+  "options": [
+    {
+      "class": "line-chart",
+      "label": "Line Chart"
+    }
+  ],
+  "memberVariantIds": [
+    "v_a9fc368f665c",
+    "v_b703468f12cd",
+    "v_fb495e558bdf"
+  ],
+  "usage": {
+    "pagesFound": 3,
+    "sampleUrls": [
+      "https://www.transurban.com/investor-centre/share-price"
+    ]
+  },
+  "reuseGuidance": "Use on investor pages. Add (line-chart) for a plain line over gridlines. Needs a JSON series source; none is wired by default."
+}

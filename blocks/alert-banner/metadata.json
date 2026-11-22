@@ -1,0 +1,31 @@
+{
+  "variantName": "alert-banner",
+  "baseBlock": "custom",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "moderate",
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "text + link",
+    "purpose": "dismissible site-wide notice bar with an icon, message and link"
+  },
+  "contentPattern": {
+    "structure": "one row: optional icon cell | message cell (text with link)",
+    "fields": [
+      "icon",
+      "message"
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_ba7095bcfd01"
+  ],
+  "usage": {
+    "pagesFound": 1,
+    "sampleUrls": [
+      "https://www.transurban.com/"
+    ]
+  },
+  "reuseGuidance": "Use for short site or page notices. Dismissal is remembered for the browser session per message text."
+}

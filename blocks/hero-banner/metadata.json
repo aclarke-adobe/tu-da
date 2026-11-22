@@ -1,0 +1,46 @@
+{
+  "variantName": "hero-banner",
+  "baseBlock": "hero",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "minimal",
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "heading + link",
+    "purpose": "page-opening background photo with headline, optional text and CTA"
+  },
+  "contentPattern": {
+    "structure": "background image cell | content cell (heading, optional text, optional CTA links); with (share-price-panel) a further cell holds the share price panel (heading, price, as-at, stats list, optional .json data link)",
+    "fields": [
+      "image",
+      "heading",
+      "text",
+      "cta",
+      "panel"
+    ]
+  },
+  "options": [
+    {
+      "class": "share-price-panel",
+      "label": "Share Price Panel"
+    }
+  ],
+  "memberVariantIds": [
+    "v_fdcbbbc1228d",
+    "v_cc6c1bbe28b1",
+    "v_5c2664ea4c4b-3",
+    "v_5c2664ea4c4b-7"
+  ],
+  "usage": {
+    "pagesFound": 76,
+    "sampleUrls": [
+      "https://www.transurban.com/",
+      "https://www.transurban.com/about-us",
+      "https://www.transurban.com/about-us/innovation",
+      "https://www.transurban.com/about-us/insights",
+      "https://www.transurban.com/campaigns/1h18-achievements"
+    ]
+  },
+  "reuseGuidance": "Use to open pages. Add (share-price-panel) for the investor hero with a share price summary."
+}

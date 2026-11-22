@@ -10,6 +10,9 @@ import {
   loadSections,
   loadCSS,
   buildBlock,
+  readBlockConfig,
+  toCamelCase,
+  toClassName,
 } from './aem.js';
 
 if (window.trustedTypes && window.trustedTypes.createPolicy) {
@@ -146,11 +149,38 @@ function decorateButtons(main) {
  * Decorates the main element.
  * @param {Element} main The main element
  */
+/**
+ * Applies Section Metadata tables: `Style` values become section classes, other keys become
+ * data attributes, and the table is removed so it is not loaded as a block.
+ * (The vendored aem.js decorateSections in this project doesn't do this.)
+ * @param {Element} main The main element
+ */
+function decorateSectionMetadata(main) {
+  main.querySelectorAll(':scope > div.section div.section-metadata').forEach((sectionMeta) => {
+    const section = sectionMeta.closest('.section');
+    const meta = readBlockConfig(sectionMeta);
+    Object.keys(meta).forEach((key) => {
+      if (key === 'style') {
+        String(meta.style).split(',')
+          .map((s) => toClassName(s.trim()))
+          .filter(Boolean)
+          .forEach((s) => section.classList.add(s));
+      } else {
+        section.dataset[toCamelCase(key)] = meta[key];
+      }
+    });
+    const wrapper = sectionMeta.parentElement;
+    sectionMeta.remove();
+    if (wrapper && wrapper !== section && !wrapper.children.length) wrapper.remove();
+  });
+}
+
 // eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
+  decorateSectionMetadata(main);
   decorateBlocks(main);
   decorateButtons(main);
 }

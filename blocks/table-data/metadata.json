@@ -1,0 +1,40 @@
+{
+  "variantName": "table-data",
+  "baseBlock": "table",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "table",
+    "purpose": "bordered data table with a header row"
+  },
+  "contentPattern": {
+    "structure": "one row per table row, one cell per column; first row is the header row when there is more than one row",
+    "fields": [
+      "cells"
+    ]
+  },
+  "options": [
+    {
+      "class": "dark",
+      "label": "Dark"
+    }
+  ],
+  "memberVariantIds": [
+    "v_319ac19bc784",
+    "v_fa9dfc6c2c2f"
+  ],
+  "usage": {
+    "pagesFound": 11,
+    "sampleUrls": [
+      "https://www.transurban.com/campaigns/nsw-toll-reform",
+      "https://www.transurban.com/customers/toll-road-ready/prezzee-fuel-smart-e-gift-cards-monthly-giveaway-tcs",
+      "https://www.transurban.com/customers/using-our-toll-roads",
+      "https://www.transurban.com/investor-centre/distributions-and-tax/distribution-components",
+      "https://www.transurban.com/investor-centre/distributions-and-tax/distribution-reinvestment-plan"
+    ]
+  },
+  "reuseGuidance": "Use for tabular data. Add (dark) for a dark header row."
+}

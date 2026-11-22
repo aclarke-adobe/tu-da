@@ -1,0 +1,395 @@
+/* hero-banner: full-bleed photo banner (source .content-banner / .module--feature-tile) */
+main > .section > .hero-banner-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+.hero-banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 145px;
+  overflow: hidden;
+  color: var(--text-color);
+}
+
+.hero-banner .hero-banner-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  line-height: 0;
+}
+
+.hero-banner .hero-banner-media picture,
+.hero-banner .hero-banner-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* source .content-banner--dark tint */
+.hero-banner .hero-banner-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgb(0 0 0 / 40%);
+}
+
+.hero-banner .hero-banner-inner {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 var(--content-padding);
+}
+
+.hero-banner:not(.hero-banner-no-image) .hero-banner-content {
+  color: #fff;
+}
+
+.hero-banner .hero-banner-content > :first-child {
+  margin-top: 0;
+}
+
+.hero-banner .hero-banner-content :is(h1, h2) {
+  margin: 0 0 25px;
+  color: #fff;
+  font-family: var(--heading-font-family);
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 32px;
+}
+
+.hero-banner .hero-banner-content p {
+  margin: 0 0 20px;
+  color: #fff;
+}
+
+.hero-banner.hero-banner-no-image .hero-banner-content :is(h1, h2, p) {
+  color: var(--text-color);
+}
+
+/* CTAs: source .btn.btn--primary.btn--small with arrow icon */
+.hero-banner .hero-banner-content p.hero-banner-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 10px;
+  margin: 0;
+}
+
+main .hero-banner a.button.primary:any-link {
+  margin: 0 0 10px;
+  border: 0;
+  padding: 10px 20px;
+}
+
+main .hero-banner .hero-banner-ctas a.button:any-link::after {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-left: 8px;
+  vertical-align: -3px;
+  background-color: currentcolor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 25 25'%3E%3Cpath d='M15.594 13.76H5.556c-.764 0-1.39-.57-1.39-1.265s.626-1.264 1.39-1.264h10.038V8.967c0-.569.75-.847 1.18-.442l3.861 3.527a.608.608 0 010 .898l-3.86 3.528c-.431.404-1.181.114-1.181-.443V13.76z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* featured: source .content-banner--featured (240px, 400px >= 1024px), large CTA */
+.hero-banner.featured {
+  min-height: 240px;
+}
+
+/* source title, subtitle and CTA are separate boxes: their margins do not collapse */
+.hero-banner.featured .hero-banner-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero-banner.featured .hero-banner-content h2 {
+  font-size: 22px;
+  line-height: 30px;
+}
+
+.hero-banner.featured .hero-banner-content p:not(.hero-banner-ctas) {
+  margin: 0;
+}
+
+.hero-banner.featured .hero-banner-content p.hero-banner-ctas {
+  gap: 10px;
+  margin-top: 30px;
+}
+
+/* source .btn.btn--primary (large): 16px/30px, 15px 30px, 60px tall */
+main .hero-banner.featured a.button.primary:any-link {
+  min-height: 60px;
+  margin: 0;
+  padding: 15px 30px;
+  font-size: var(--body-font-size-m);
+}
+
+main .hero-banner.featured .hero-banner-ctas a.button:any-link::after {
+  margin-left: 10px;
+}
+
+/* photo hero with only a foreground logo: the photo keeps its own proportions */
+.hero-banner.hero-banner-image {
+  display: grid;
+  align-items: stretch;
+}
+
+.hero-banner.hero-banner-image > * {
+  grid-area: 1 / 1;
+}
+
+.hero-banner.hero-banner-image .hero-banner-media {
+  position: relative;
+  inset: auto;
+}
+
+.hero-banner.hero-banner-image .hero-banner-media::after {
+  content: none;
+}
+
+/* source logo offset from the top of the photo: 169px at every width */
+.hero-banner.hero-banner-image .hero-banner-inner {
+  align-self: start;
+  padding-top: 169px;
+  padding-bottom: 40px;
+}
+
+.hero-banner .hero-banner-content .hero-banner-logo {
+  margin: 0 0 14px;
+  line-height: 0;
+}
+
+.hero-banner .hero-banner-content .hero-banner-logo:last-child {
+  margin-bottom: 0;
+}
+
+.hero-banner .hero-banner-logo img {
+  display: block;
+  width: auto;
+  max-width: min(100%, 500px);
+  height: auto;
+}
+
+/* callout: source rich-text module on a photo (h2 + small CTA), padding-driven */
+.hero-banner.callout {
+  display: block;
+  min-height: 0;
+}
+
+.hero-banner.callout .hero-banner-inner {
+  padding-top: 55px;
+  padding-bottom: 40px;
+}
+
+.hero-banner.callout .hero-banner-content h2 {
+  margin-bottom: 25px;
+  font-size: 22px;
+  line-height: 30px;
+}
+
+/* share-price-panel: gradient photo, intro left, share price tile right */
+.hero-banner.share-price-panel {
+  display: block;
+  min-height: 0;
+}
+
+.hero-banner.share-price-panel .hero-banner-media::after {
+  content: none;
+}
+
+.hero-banner.share-price-panel .hero-banner-inner {
+  padding-top: 55px;
+}
+
+.hero-banner.share-price-panel .hero-banner-content {
+  padding: 64px 30px 65px;
+}
+
+.hero-banner.share-price-panel .hero-banner-content :is(h1, h2) {
+  margin-bottom: 20px;
+}
+
+.hero-banner.share-price-panel .hero-banner-content p:not(.hero-banner-ctas) {
+  font-size: 22.4px;
+  line-height: 38.4px;
+}
+
+.hero-banner.share-price-panel .hero-banner-panel {
+  position: relative;
+  padding: 60px 30px 70px;
+  background-color: rgb(30 32 29 / 70%);
+  color: #fff;
+  text-align: center;
+}
+
+.hero-banner.share-price-panel .hero-banner-panel > * {
+  margin: 0;
+}
+
+.hero-banner.share-price-panel .hero-banner-panel :is(h1, h2, h3, h4, h5, h6) {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 30px;
+}
+
+.hero-banner.share-price-panel .hero-banner-panel-price {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 15px;
+  font-size: 60px;
+  line-height: 70px;
+}
+
+.hero-banner.share-price-panel .hero-banner-panel-currency {
+  font-size: 36px;
+  line-height: 1;
+}
+
+.hero-banner.share-price-panel .hero-banner-panel-price::after {
+  content: '';
+  width: 21px;
+  height: 21px;
+  margin-left: 4px;
+  background-color: currentcolor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 25 25'%3E%3Cpath d='M17.543 9.375a.5.5 0 01.353.854l-5.042 5.042a.5.5 0 01-.708 0L7.104 10.23a.5.5 0 01.353-.854h10.086z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.hero-banner.share-price-panel .hero-banner-panel-price[data-direction='up']::after {
+  transform: rotate(180deg);
+}
+
+.hero-banner.share-price-panel .hero-banner-panel-price[data-direction='flat']::after {
+  content: none;
+}
+
+.hero-banner.share-price-panel .hero-banner-panel-asat {
+  margin-top: 8px;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.hero-banner.share-price-panel .hero-banner-panel-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 130px);
+  justify-content: center;
+  gap: 20px 0;
+  margin-top: 31px;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+
+.hero-banner.share-price-panel .hero-banner-panel-stats li {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+}
+
+.hero-banner.share-price-panel .hero-banner-panel-label {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.hero-banner.share-price-panel .hero-banner-panel-value {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+}
+
+/* source: the whole tile links to the share price page */
+.hero-banner.share-price-panel .hero-banner-panel-link a:any-link {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  color: transparent;
+  font-size: 0;
+}
+
+.hero-banner.share-price-panel .hero-banner-panel-link a:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: -4px;
+}
+
+@media (width >= 1024px) {
+  .hero-banner {
+    min-height: 180px;
+  }
+
+  .hero-banner .hero-banner-inner {
+    padding-bottom: 10px;
+  }
+
+  .hero-banner .hero-banner-content :is(h1, h2) {
+    margin-bottom: 0;
+    font-size: 42px;
+    line-height: 56px;
+  }
+
+  .hero-banner.featured {
+    min-height: 400px;
+  }
+
+  .hero-banner.featured .hero-banner-inner {
+    padding-bottom: 0;
+  }
+
+  .hero-banner.featured .hero-banner-content :is(h1, h2) {
+    margin-bottom: 10px;
+  }
+
+  .hero-banner.featured .hero-banner-content h2 {
+    font-size: 32px;
+    line-height: 45.71px;
+  }
+
+  .hero-banner.hero-banner-image .hero-banner-inner,
+  .hero-banner.callout .hero-banner-inner {
+    padding-bottom: 100px;
+  }
+
+  .hero-banner.callout .hero-banner-content h2 {
+    margin-bottom: 25px;
+    font-size: 28px;
+    line-height: 40px;
+  }
+
+  .hero-banner.share-price-panel .hero-banner-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 437px;
+    align-items: start;
+    column-gap: 13px;
+    padding-bottom: 0;
+  }
+
+  .hero-banner.share-price-panel .hero-banner-content {
+    padding: 54px 40px 0;
+  }
+
+  .hero-banner.share-price-panel .hero-banner-content :is(h1, h2) {
+    max-width: 800px;
+    margin-bottom: 20px;
+    font-size: 36px;
+    line-height: 48px;
+  }
+
+  .hero-banner.share-price-panel .hero-banner-panel {
+    padding: 50px 60px;
+  }
+
+  .hero-banner.share-price-panel .hero-banner-panel-stats {
+    grid-template-columns: repeat(2, 135px);
+  }
+
+  .hero-banner.share-price-panel .hero-banner-panel-stats li {
+    padding-left: 25px;
+  }
+}

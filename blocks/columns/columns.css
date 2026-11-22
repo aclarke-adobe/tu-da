@@ -1,6 +1,29 @@
+.columns {
+  color: var(--text-color);
+}
+
 .columns > div {
   display: flex;
   flex-direction: column;
+  gap: 15px;
+}
+
+.columns > div + div {
+  margin-top: 15px;
+}
+
+.columns p {
+  font-size: var(--body-font-size-m);
+  line-height: 24px;
+  margin: 0 0 var(--paragraph-margin);
+}
+
+.columns > div > div > :first-child {
+  margin-top: 0;
+}
+
+.columns > div > div > :last-child {
+  margin-bottom: 0;
 }
 
 .columns img {
@@ -21,13 +44,18 @@
 
 @media (width >= 900px) {
   .columns > div {
-    align-items: center;
+    align-items: flex-start;
     flex-direction: unset;
-    gap: 24px;
+    gap: 20px;
+  }
+
+  .columns > div + div {
+    margin-top: 20px;
   }
 
   .columns > div > div {
     flex: 1;
+    min-width: 0;
     order: unset;
   }
 }

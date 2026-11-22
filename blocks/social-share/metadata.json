@@ -1,0 +1,30 @@
+{
+  "variantName": "social-share",
+  "baseBlock": "custom",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "link",
+    "purpose": "row of social network share buttons for the current page"
+  },
+  "contentPattern": {
+    "structure": "network names or links (Twitter/X, Facebook, LinkedIn, WhatsApp, Email), optionally with icons; empty block uses the default set",
+    "fields": [
+      "networks"
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_5e8dc66f079f"
+  ],
+  "usage": {
+    "pagesFound": 1,
+    "sampleUrls": [
+      "https://www.transurban.com/communities/partnerships-and-grants/kidsafe/kidsafeqld"
+    ]
+  },
+  "reuseGuidance": "Use for a standalone share row. For the article footer share + tags bar use article-share-tags."
+}

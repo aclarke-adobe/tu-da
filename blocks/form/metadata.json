@@ -1,0 +1,35 @@
+{
+  "variantName": "form",
+  "baseBlock": "custom",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "dense",
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "heading + text + field + video + button",
+    "purpose": "web form with text inputs, selects, checkboxes and a submit button"
+  },
+  "contentPattern": {
+    "structure": "either a link to a form definition sheet (.json: Name, Label, Type, Options, Mandatory, Placeholder, Value, Help) or rows of Label | Type | Options | Mandatory | Placeholder; plus optional Action, Submit and Success rows and free text rows",
+    "fields": [
+      "fields",
+      "action",
+      "submit label",
+      "success message"
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_5c2664ea4c4b-4"
+  ],
+  "usage": {
+    "pagesFound": 3,
+    "sampleUrls": [
+      "https://www.transurban.com/communities/community-grants/peoples-choice-award",
+      "https://www.transurban.com/customers/toll-road-ready",
+      "https://www.transurban.com/investor-centre/share-price"
+    ]
+  },
+  "reuseGuidance": "Use for forms that POST JSON to an endpoint. reCAPTCHA is not built in; add it at the endpoint or as a later enhancement."
+}

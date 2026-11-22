@@ -1,0 +1,11 @@
+{
+  "type": "da",
+  "sites": {
+    "tu-da": {
+      "previewOrg": "aclarke-adobe",
+      "previewSite": "tu-da",
+      "contentHostUrl": "https://content.da.live/aclarke-adobe/tu-da/",
+      "libraryUrl": "https://main--sta-boilerplate--aemdemos.aem.page/tools/sidekick/library.json"
+    }
+  }
+}

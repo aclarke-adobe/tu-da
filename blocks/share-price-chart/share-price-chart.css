@@ -1,0 +1,135 @@
+/* Source: .share-price-chart__chart-controls / .yourir-chart-panel-plots computed styles */
+
+.share-price-chart {
+  color: var(--text-color);
+}
+
+/* range toggles (mobile: three per row) */
+.share-price-chart .share-price-chart-ranges {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 3.33%;
+  margin: 15px 0;
+}
+
+.share-price-chart .share-price-chart-range {
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  width: 30%;
+  margin: 0 0 7px;
+  padding: 10px 5px;
+  border: 1px solid var(--brand-grey-border);
+  border-radius: var(--button-radius);
+  background-color: transparent;
+  color: #000;
+  font-family: var(--body-font-family);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 13px;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--link-transition);
+}
+
+.share-price-chart .share-price-chart-range:hover,
+.share-price-chart .share-price-chart-range:focus-visible {
+  border-color: var(--brand-green);
+}
+
+.share-price-chart .share-price-chart-range[aria-pressed='true'] {
+  border-color: var(--brand-green);
+  background-color: var(--brand-green);
+  color: #fff;
+}
+
+/* plot area: the source reserves 60px on the right for the price axis */
+.share-price-chart .share-price-chart-figure {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 60px;
+  margin: 0;
+  color: rgb(37 66 84);
+}
+
+.share-price-chart .share-price-chart-svg {
+  display: block;
+  width: 100%;
+  height: 200px;
+  overflow: visible;
+  border-bottom: 1px solid currentcolor;
+}
+
+.share-price-chart .share-price-chart-line {
+  fill: none;
+  stroke: var(--brand-green);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
+
+.share-price-chart .share-price-chart-area {
+  fill: var(--brand-green);
+  opacity: 0.1;
+}
+
+.share-price-chart.line-chart .share-price-chart-grid {
+  stroke: #ccc;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.share-price-chart .share-price-chart-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 200px;
+  margin: 0;
+  padding: 0 0 0 8px;
+  list-style: none;
+  font-size: 11px;
+  line-height: 13px;
+}
+
+.share-price-chart .share-price-chart-axis li {
+  transform: translateY(-50%);
+}
+
+.share-price-chart .share-price-chart-axis li:first-child {
+  transform: none;
+}
+
+.share-price-chart .share-price-chart-axis li:last-child {
+  transform: translateY(-100%);
+}
+
+.share-price-chart .share-price-chart-summary {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.share-price-chart.share-price-chart-empty .share-price-chart-summary {
+  grid-column: 1 / -1;
+  position: static;
+  width: auto;
+  height: auto;
+  margin-top: 10px;
+  clip-path: none;
+  white-space: normal;
+}
+
+@media (width >= 900px) {
+  .share-price-chart .share-price-chart-ranges {
+    gap: 0 14px;
+  }
+
+  .share-price-chart .share-price-chart-range {
+    width: 80px;
+    margin: 0;
+    padding: 10px 15px;
+    font-size: var(--body-font-size-xs);
+    line-height: 16px;
+  }
+}

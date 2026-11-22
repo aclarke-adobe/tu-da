@@ -1,0 +1,109 @@
+/* alert-banner: full-bleed grey notice bar (source .alert-v2 / .alert__contents) */
+main > .section > .alert-banner-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+.alert-banner {
+  color: var(--text-color);
+}
+
+.alert-banner .alert-banner-inner {
+  display: flex;
+  background-color: var(--brand-grey-light);
+  align-items: flex-start;
+  padding: 10px 24px 10px 25px;
+}
+
+.alert-banner .alert-banner-icon {
+  flex: 0 0 auto;
+  margin: 2px 18px 0 0;
+  line-height: 0;
+}
+
+.alert-banner .alert-banner-icon .icon {
+  display: block;
+  width: 32px;
+  height: 32px;
+}
+
+.alert-banner .alert-banner-icon :is(img, svg) {
+  display: block;
+  width: 32px;
+  height: 32px;
+}
+
+.alert-banner .alert-banner-icon svg .fill {
+  fill: var(--brand-charcoal);
+}
+
+.alert-banner .alert-banner-message {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-color);
+}
+
+.alert-banner .alert-banner-message p {
+  margin: 0;
+}
+
+.alert-banner .alert-banner-message a:any-link {
+  color: var(--brand-green);
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.alert-banner .alert-banner-message a:hover {
+  text-decoration: underline;
+}
+
+.alert-banner .alert-banner-close {
+  position: relative;
+  flex: 0 0 auto;
+  width: 13px;
+  height: 13px;
+  margin: 6px 0 0 13px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #919191;
+  cursor: pointer;
+}
+
+.alert-banner .alert-banner-close::before,
+.alert-banner .alert-banner-close::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 17px;
+  height: 1.5px;
+  background: currentcolor;
+}
+
+.alert-banner .alert-banner-close::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.alert-banner .alert-banner-close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+@media (width >= 900px) {
+  .alert-banner .alert-banner-inner {
+    align-items: center;
+    padding: 12px 51px 11px 30px;
+  }
+
+  .alert-banner .alert-banner-icon {
+    margin-top: 0;
+  }
+
+  .alert-banner .alert-banner-close {
+    margin: 0 0 0 16px;
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "variantName": "cards-icon",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "dense",
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "link + image + text",
+    "purpose": "row of icon items, each with a title and optional text and link"
+  },
+  "contentPattern": {
+    "structure": "icon image cell | body cell (title, optional text, optional link)",
+    "fields": [
+      "icon",
+      "title",
+      "text",
+      "link"
+    ]
+  },
+  "options": [
+    {
+      "class": "tiles",
+      "label": "Tiles"
+    }
+  ],
+  "memberVariantIds": [
+    "v_b38e9414d577",
+    "v_5c2664ea4c4b-2",
+    "v_5c2664ea4c4b-5",
+    "v_2d97de940af0"
+  ],
+  "usage": {
+    "pagesFound": 18,
+    "sampleUrls": [
+      "https://www.transurban.com/",
+      "https://www.transurban.com/communities/life-around-our-roads",
+      "https://www.transurban.com/communities/life-around-our-roads/watson-st-open-space",
+      "https://www.transurban.com/communities/partnerships-and-grants",
+      "https://www.transurban.com/customers/using-our-toll-roads"
+    ]
+  },
+  "reuseGuidance": "Use for icon-led navigation or feature lists. Add (tiles) for filled tiles where the whole tile is the link."
+}

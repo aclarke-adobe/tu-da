@@ -1,0 +1,89 @@
+/* Feature tile: the photo sits at the top of the tile at the source's height
+   (anchored right), under a 10% black mask; light text sits below it on the
+   dark tile colour, which continues the photo's dark lower band. */
+.testimonial {
+  position: relative;
+  overflow: hidden;
+  color: var(--text-color);
+}
+
+.testimonial .testimonial-figure {
+  position: relative;
+  background-color: #2d2d2d;
+  display: flex;
+  flex-direction: column;
+  min-height: 684px;
+  margin: 0;
+}
+
+.testimonial .testimonial-image {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 684px;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.testimonial .testimonial-image img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: auto;
+  min-width: 100%;
+  max-width: none;
+  height: 100%;
+}
+
+.testimonial .testimonial-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgb(0 0 0 / 10%);
+}
+
+.testimonial .testimonial-body {
+  position: relative;
+  padding: 261px 30px 107px;
+  color: #fff;
+  font-size: var(--body-font-size-s);
+  line-height: 24px;
+}
+
+.testimonial .testimonial-body p {
+  margin: 0 0 var(--paragraph-margin);
+}
+
+.testimonial .testimonial-body > :last-child {
+  margin-bottom: 0;
+}
+
+.testimonial .testimonial-name {
+  font-weight: 700;
+}
+
+.testimonial .testimonial-quote {
+  padding: 0;
+  font-style: italic;
+}
+
+.testimonial .testimonial-body a:any-link {
+  color: inherit;
+}
+
+@media (width >= 900px) {
+  .testimonial {
+    max-width: calc(50% - 10px);
+  }
+
+  .testimonial .testimonial-figure {
+    min-height: 500px;
+  }
+
+  .testimonial .testimonial-image {
+    height: 500px;
+  }
+
+  .testimonial .testimonial-body {
+    padding: 229px 40px 75px;
+  }
+}

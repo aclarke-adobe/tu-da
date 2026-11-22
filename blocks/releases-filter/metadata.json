@@ -1,0 +1,33 @@
+{
+  "variantName": "releases-filter",
+  "baseBlock": "custom",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "field",
+    "purpose": "search box and dropdown filters for the ASX releases list that follows it"
+  },
+  "contentPattern": {
+    "structure": "key/value rows: Search | placeholder; Category | all-label then options; Year | all-label then options or \"auto\"; optional Target | CSS selector of items",
+    "fields": [
+      "search",
+      "category",
+      "year",
+      "target"
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_89d5b386b9ee"
+  ],
+  "usage": {
+    "pagesFound": 1,
+    "sampleUrls": [
+      "https://www.transurban.com/investor-centre/asx-releases"
+    ]
+  },
+  "reuseGuidance": "Place directly before the list it filters, in the same section. Filters by text match and keeps state in the URL."
+}

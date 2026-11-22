@@ -1,0 +1,95 @@
+/*
+ * Brand tokens for Transurban (source: https://www.transurban.com/investor-centre).
+ * Values are measured computed styles from the source site; see migration-work/brand.json.
+ */
+
+:root {
+  /* brand palette */
+  --brand-green: #0e893c;
+  --brand-green-hover: rgb(14 137 60 / 85%);
+  --brand-charcoal: #2c2a29;
+  --brand-slate: #313e48;
+  --brand-black: #222;
+  --brand-grey-light: #f3f3f3;
+  --brand-grey-border: #e5e5e5;
+  --brand-grey-outline: #cbcdce;
+  --brand-grey-hover: #e0e1e2;
+
+  /* colors */
+  --background-color: #fff;
+  --light-color: var(--brand-grey-light);
+  --dark-color: var(--brand-slate);
+  --text-color: #333;
+  --heading-color: #000;
+  --link-color: var(--brand-green);
+  --link-hover-color: var(--brand-green-hover);
+  --focus-ring-color: #101010;
+  --border-color: var(--brand-grey-border);
+
+  /* fonts (Open Sans is self-hosted, see styles/fonts.css) */
+  --body-font-family: 'Open Sans', open-sans-fallback, sans-serif;
+  --heading-font-family: 'Open Sans', open-sans-fallback, sans-serif;
+  --body-font-weight: 400;
+  --heading-font-weight: 600;
+  --link-font-weight: 600;
+
+  /* body sizes (source body copy is 16px/24px at every width) */
+  --body-font-size-m: 16px;
+  --body-font-size-s: 15px;
+  --body-font-size-xs: 14px;
+  --body-line-height: 1.5;
+
+  /* heading sizes: mobile (< 1024px) */
+  --heading-font-size-xxl: 26px;
+  --heading-font-size-xl: 22px;
+  --heading-font-size-l: 20px;
+  --heading-font-size-m: 18px;
+  --heading-font-size-s: 18px;
+  --heading-font-size-xs: 17px;
+  --heading-line-height-xxl: 32px;
+  --heading-line-height-xl: 30px;
+  --heading-line-height-l: 30px;
+  --heading-line-height-m: 28px;
+  --heading-line-height-s: 30px;
+  --heading-line-height-xs: 26px;
+
+  /* spacing */
+  --section-padding: 40px;
+  --section-padding-m: 60px;
+  --section-padding-l: 100px;
+  --content-max-width: 1440px;
+  --content-padding: 25px;
+  --text-max-width: 800px;
+  --heading-margin-top: 30px;
+  --heading-margin-bottom: 25px;
+  --paragraph-margin: 14px;
+
+  /* buttons */
+  --button-radius: 40px;
+  --button-transition: 250ms;
+
+  /* motion */
+  --link-transition: color 250ms ease-in-out, background-color 250ms ease-in-out, border-color 250ms ease-in-out;
+
+  /* nav height (mobile; the desktop 142px bar is set on header in styles.css) */
+  --nav-height: 55px;
+}
+
+@media (width >= 1024px) {
+  :root {
+    /* heading sizes: desktop */
+    --heading-font-size-xxl: 36px;
+    --heading-font-size-xl: 28px;
+    --heading-font-size-l: 24px;
+    --heading-font-size-m: 20px;
+    --heading-font-size-s: 18px;
+    --heading-font-size-xs: 17px;
+    --heading-line-height-xxl: 48px;
+    --heading-line-height-xl: 40px;
+    --heading-line-height-l: 36px;
+    --heading-line-height-m: 32px;
+    --heading-line-height-s: 30px;
+    --heading-line-height-xs: 26px;
+    --content-padding: 45px;
+  }
+}

@@ -1,0 +1,247 @@
+/*
+ * cards-icon
+ * Source: transurban.com feature tiles (migration-work/design/cards-icon, cards-icon--tiles).
+ * Grid columns sit 20px apart with a 15px top offset; feature columns pad 15px 20px.
+ * Card content (source .feature-tile__content) pads 15px above; title 20px/34px
+ * with 14px below, paragraphs 16px/24px with 14px margins. Icons render at natural
+ * size, centred and clipped to the column (source wide 750px icon artwork).
+ */
+.cards-icon {
+  color: var(--text-color);
+}
+
+.cards-icon > ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cards-icon .cards-icon-card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  padding: 15px 20px;
+  text-align: center;
+}
+
+.cards-icon .cards-icon-card-icon {
+  display: flex;
+  align-self: stretch;
+  justify-content: center;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.cards-icon .cards-icon-card-icon a {
+  display: block;
+}
+
+.cards-icon .cards-icon-card-icon img {
+  max-width: none;
+}
+
+.cards-icon .cards-icon-card-body {
+  box-sizing: border-box;
+  width: 100%;
+  padding-top: 15px;
+}
+
+.cards-icon .cards-icon-card-body > :first-child:not(p) {
+  margin-top: 0;
+}
+
+.cards-icon .cards-icon-card-body > :last-child {
+  margin-bottom: 14px;
+}
+
+.cards-icon .cards-icon-card-body :is(h2, h3, h4, h5, h6) {
+  margin: 0 0 14px;
+  color: var(--text-color);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 34px;
+}
+
+.cards-icon .cards-icon-card-body p {
+  margin: 14px 0;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+/* linked title (h3 > a): the source title is part of the tile link, in the heading colour */
+.cards-icon .cards-icon-card-body :is(h2, h3, h4, h5, h6) a:any-link {
+  color: inherit;
+  font-weight: inherit;
+}
+
+/* sub-link lists and text links: source green 600 links, centred */
+.cards-icon .cards-icon-card-body p a:any-link {
+  font-weight: 600;
+}
+
+/* linked text that is part of the tile link reads as body text */
+main .cards-icon p > a.cards-icon-card-text-link:any-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+main .cards-icon p > a.cards-icon-card-text-link:hover,
+main .cards-icon p > a.cards-icon-card-text-link:focus-visible {
+  text-decoration: underline;
+}
+
+main .cards-icon p.cards-icon-card-text > a.cards-icon-card-text-link:any-link {
+  font-weight: 400;
+}
+
+/* feature tile: icon and title link to the CTA's page */
+.cards-icon a.cards-icon-card-title-link:any-link {
+  display: block;
+  margin-top: 0;
+  color: var(--text-color);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-decoration: none;
+}
+
+.cards-icon a.cards-icon-card-title-link:any-link > * {
+  margin: 0;
+}
+
+.cards-icon .cards-icon-card-body > p.cards-icon-card-cta-wrapper {
+  margin: 20px 0 14px;
+}
+
+.cards-icon .cards-icon-card-body > p.cards-icon-card-text + p.cards-icon-card-cta-wrapper {
+  margin-top: 14px;
+}
+
+/*
+ * source .btn.btn--primary.btn--small (arrow on titled tiles only);
+ * p > a outranks the dark-band underline on paragraph links
+ */
+main .cards-icon p > a.cards-icon-card-cta:any-link {
+  box-sizing: border-box;
+  display: inline-block;
+  position: relative;
+  max-width: 100%;
+  margin: 0 0 10px;
+  border: 0;
+  border-radius: var(--button-radius);
+  padding: 10px 20px;
+  background-color: var(--brand-green);
+  box-shadow: inset 0 0 0 100vmax rgb(255 255 255 / 0%);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 30px;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: top;
+  transition: all var(--button-transition);
+}
+
+main .cards-icon .cards-icon-card-cta-arrow {
+  width: 18px;
+  height: 18px;
+  margin-left: 12px;
+  vertical-align: -3px;
+}
+
+main .cards-icon p > a.cards-icon-card-cta:hover,
+main .cards-icon p > a.cards-icon-card-cta:focus-visible {
+  box-shadow: inset 0 0 0 100vmax rgb(255 255 255 / 15%);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* tiles: filled green tile, title above icon, whole tile is the link */
+.cards-icon.tiles > ul {
+  gap: 15px 20px;
+  padding-top: 15px;
+}
+
+.cards-icon.tiles .cards-icon-card {
+  min-height: 168px;
+  padding: 0;
+  background-color: var(--brand-green);
+  color: #fff;
+}
+
+.cards-icon.tiles .cards-icon-card,
+.cards-icon.tiles a.cards-icon-card-link:any-link {
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+}
+
+.cards-icon.tiles a.cards-icon-card-link:any-link {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  align-self: stretch;
+  color: var(--text-color);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: start;
+  text-decoration: none;
+}
+
+.cards-icon.tiles .cards-icon-card-body {
+  box-sizing: border-box;
+  padding: 15px 20px 0;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 34px;
+  text-align: center;
+}
+
+.cards-icon.tiles .cards-icon-card-body > :first-child {
+  margin-top: 0;
+}
+
+.cards-icon.tiles .cards-icon-card-body :is(h2, h3, h4, h5, h6) {
+  margin: 0;
+  color: inherit;
+  font: inherit;
+}
+
+.cards-icon.tiles .cards-icon-card-body p {
+  color: inherit;
+}
+
+.cards-icon.tiles .cards-icon-card-body a:any-link {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.cards-icon.tiles .cards-icon-card-icon img,
+.cards-icon.tiles .cards-icon-card-icon .icon {
+  width: 32px;
+  height: 32px;
+}
+
+@media (width >= 900px) {
+  .cards-icon > ul.cards-icon-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cards-icon > ul.cards-icon-cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cards-icon > ul.cards-icon-cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .cards-icon.tiles .cards-icon-card {
+    min-height: 162px;
+  }
+}

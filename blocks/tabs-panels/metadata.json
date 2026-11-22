@@ -1,0 +1,43 @@
+{
+  "variantName": "tabs-panels",
+  "baseBlock": "tabs",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "moderate",
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "list + link + text",
+    "purpose": "tabbed switcher of related content panels"
+  },
+  "contentPattern": {
+    "structure": "tab label cell | panel cell (rich content, or a single /fragments/ link loaded as a fragment for panels holding other blocks)",
+    "fields": [
+      "label",
+      "panel"
+    ]
+  },
+  "options": [
+    {
+      "class": "light",
+      "label": "Light"
+    }
+  ],
+  "memberVariantIds": [
+    "v_b7afa704d666",
+    "v_8a8953a9eada",
+    "v_8a8953a9eada-1",
+    "v_b38e9414d577-4"
+  ],
+  "usage": {
+    "pagesFound": 6,
+    "sampleUrls": [
+      "https://www.transurban.com/about-us/innovation",
+      "https://www.transurban.com/about-us/insights",
+      "https://www.transurban.com/campaigns/nsw-toll-reform",
+      "https://www.transurban.com/investor-centre/reporting-suite",
+      "https://www.transurban.com/sustainability/air-quality"
+    ]
+  },
+  "reuseGuidance": "Use for switching between related panels. Add (light) for the light tab style. Put document lists, maps or other blocks in a fragment."
+}

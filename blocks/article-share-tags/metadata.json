@@ -1,0 +1,36 @@
+{
+  "variantName": "article-share-tags",
+  "baseBlock": "custom",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "link",
+    "purpose": "article footer bar with a Share control and topic tag pills"
+  },
+  "contentPattern": {
+    "structure": "a cell starting with \"Share\" (optionally listing networks) and a cell of tag links or names, one per paragraph or list item",
+    "fields": [
+      "share",
+      "tags"
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_1a658f19384a",
+    "v_2f435185c680"
+  ],
+  "usage": {
+    "pagesFound": 234,
+    "sampleUrls": [
+      "https://www.transurban.com/archive/qrsw",
+      "https://www.transurban.com/news/495-express-lanes-northern-extension-now-open",
+      "https://www.transurban.com/news/495-next-project-early-works",
+      "https://www.transurban.com/news/95-express-lanes-fredericksburg-extension-opens",
+      "https://www.transurban.com/news/a-breath-of-fresh-air-thanks-to-northconnex"
+    ]
+  },
+  "reuseGuidance": "Use at the end of news articles. Omit the Share cell to get the default Share button; tags may be links or plain text."
+}

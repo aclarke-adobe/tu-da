@@ -1,0 +1,37 @@
+{
+  "variantName": "author-bio",
+  "baseBlock": "custom",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "moderate",
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "image + text + link",
+    "purpose": "author headshot, name, bio and social link at the end of an article"
+  },
+  "contentPattern": {
+    "structure": "one row: headshot image cell | text cell (name, bio, LinkedIn link)",
+    "fields": [
+      "image",
+      "name",
+      "bio",
+      "social link"
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_cc4879042a54"
+  ],
+  "usage": {
+    "pagesFound": 23,
+    "sampleUrls": [
+      "https://www.transurban.com/news/asset-recycling-getting-beyond-the-name",
+      "https://www.transurban.com/news/cavs-and-managed-roadways",
+      "https://www.transurban.com/news/cavs-i95-express-lanes",
+      "https://www.transurban.com/news/cleveland-street-off-ramp",
+      "https://www.transurban.com/news/connecting-people-with-meaningful-work"
+    ]
+  },
+  "reuseGuidance": "Use for article author profiles. For a quote-led profile use testimonial."
+}

@@ -1,0 +1,33 @@
+{
+  "variantName": "testimonial",
+  "baseBlock": "custom",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "hasGrid": false,
+    "imagePattern": "large",
+    "structure": "image",
+    "purpose": "single profile with photo, name, bio and quote"
+  },
+  "contentPattern": {
+    "structure": "photo cell | text cell (name, bio, quote in italics, quotation marks or blockquote); or photo row then text row",
+    "fields": [
+      "image",
+      "name",
+      "bio",
+      "quote"
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_954f052d113a"
+  ],
+  "usage": {
+    "pagesFound": 1,
+    "sampleUrls": [
+      "https://www.transurban.com/campaigns/ignite"
+    ]
+  },
+  "reuseGuidance": "Use for people stories. For article author footers use author-bio."
+}

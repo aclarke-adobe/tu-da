@@ -1,0 +1,45 @@
+{
+  "variantName": "columns-media",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "dense",
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "text + link + heading + list + image",
+    "purpose": "text column beside an image or illustration column"
+  },
+  "contentPattern": {
+    "structure": "text cell (heading, text, list, buttons) | media cell (image); either order",
+    "fields": [
+      "heading",
+      "text",
+      "list",
+      "link",
+      "image"
+    ]
+  },
+  "options": [
+    {
+      "class": "boxed",
+      "label": "Boxed"
+    }
+  ],
+  "memberVariantIds": [
+    "v_319ac19bc784-2",
+    "v_75d3a323186b-1",
+    "v_4195d82fee1a-1"
+  ],
+  "usage": {
+    "pagesFound": 5,
+    "sampleUrls": [
+      "https://www.transurban.com/communities/partnerships-and-grants",
+      "https://www.transurban.com/communities/reconciliation",
+      "https://www.transurban.com/news/attitudes-towards-road-user-charging-reform",
+      "https://www.transurban.com/news/sustainable-development-goals",
+      "https://www.transurban.com/communities/partnerships-and-grants/kidsafe"
+    ]
+  },
+  "reuseGuidance": "Use for text plus media bands. Add (boxed) for a filled panel."
+}

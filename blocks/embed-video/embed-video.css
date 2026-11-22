@@ -1,0 +1,77 @@
+/* source: full-width .video container; outer spacing comes from the section */
+.embed-video {
+  width: 100%;
+  margin: 0;
+}
+
+/* source mobile: fluid video box, padding-bottom 56.25% + 25px (375 -> 236px) */
+.embed-video .embed-video-frame {
+  position: relative;
+  height: 0;
+  padding-bottom: calc(56.25% + 25px);
+  overflow: hidden;
+  line-height: 0;
+}
+
+.embed-video .embed-video-frame iframe,
+.embed-video .embed-video-frame picture,
+.embed-video .embed-video-frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.embed-video .embed-video-frame img {
+  object-fit: cover;
+}
+
+.embed-video .embed-video-placeholder {
+  cursor: pointer;
+}
+
+.embed-video .embed-video-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 72px;
+  height: 72px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(0 0 0 / 60%);
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.embed-video .embed-video-play::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 54%;
+  border-top: 14px solid transparent;
+  border-bottom: 14px solid transparent;
+  border-left: 22px solid #fff;
+  transform: translate(-50%, -50%);
+}
+
+/*
+ * source desktop: iframe is width 100% at its authored height attribute
+ * (853x480 full-width modules, 215 in 1/3 grid columns, 315 in articles).
+ * The height attribute is not carried into content, so size 16:9 of the
+ * rendered width, capped at the source's tallest authored height (480px).
+ * Full-width blocks stay full width x 480 (1h18-achievements); narrower
+ * containers (e.g. columns) shrink to 16:9 of their width.
+ */
+@media (width >= 900px) {
+  .embed-video .embed-video-frame {
+    /* definite width so max-height clamps the height, not the width */
+    width: 100%;
+    height: auto;
+    max-height: 480px;
+    padding-bottom: 0;
+    aspect-ratio: 16 / 9;
+  }
+}

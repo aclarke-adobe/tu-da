@@ -1,20 +1,234 @@
+/* mobile first: stacked logo, links, social, legal, share price */
 footer {
-  background-color: var(--light-color);
-  font-size: var(--body-font-size-xs);
+  background-color: rgb(46 50 52);
+  color: rgb(177 176 173);
+  font-family: "Open Sans", var(--body-font-family);
 }
 
-footer .footer > div {
-  margin: auto;
-  max-width: 1200px;
-  padding: 40px 24px 24px;
+footer .footer-inner {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 25px 30px;
 }
 
-footer .footer p {
+/* flatten wrappers so the stacking order can follow the source on mobile */
+footer .footer-main,
+footer .footer-legal {
+  display: contents;
+}
+
+footer ul {
+  list-style: none;
   margin: 0;
+  padding: 0;
 }
 
+footer .footer a {
+  transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out, border-color 0.25s ease-in-out;
+}
+
+/* logo */
+footer .footer-legal .footer-logo {
+  order: -2;
+  height: 24px;
+  margin: 0;
+  padding: 25px 0 20px;
+}
+
+footer .footer-logo a {
+  display: block;
+  line-height: 0;
+}
+
+footer .footer-logo img {
+  width: 110px;
+  height: 17px;
+  margin-top: 1px;
+}
+
+/* primary links */
+footer .footer-links {
+  order: -1;
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+}
+
+footer .footer-links a {
+  display: block;
+  padding: 10px 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  color: rgb(177 176 173);
+  text-decoration: none;
+}
+
+/* social icons */
+footer .footer-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  padding: 15px 0 10px;
+}
+
+footer .footer-social a {
+  display: flex;
+  color: rgb(14 137 60);
+  text-decoration: none;
+}
+
+footer .footer-social img {
+  display: block;
+  width: 19px;
+  height: 19px;
+}
+
+/* copyright + legal links */
+footer .footer-legal p {
+  margin: 0;
+  color: rgb(129 128 128);
+  font-size: 14px;
+  line-height: 21px;
+}
+
+footer .footer-legal a {
+  color: rgb(129 128 128);
+  text-decoration: none;
+}
+
+footer .footer-legal .footer-copyright {
+  margin-top: 30px;
+}
+
+footer .footer-legal .footer-legal-links {
+  margin: 5px 0 3px;
+  font-weight: 600;
+}
+
+/* share price */
+footer .footer-aside {
+  margin-top: 64px;
+}
+
+footer .footer-quote {
+  display: block;
+  width: 160px;
+  padding-top: 25px;
+  color: rgb(255 255 255);
+  text-decoration: none;
+}
+
+footer .footer-quote span {
+  display: inline-block;
+  width: 100%;
+}
+
+footer .footer-quote-code {
+  margin-bottom: 15px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15.65px;
+}
+
+footer .footer-quote-price {
+  margin-bottom: 13px;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 40px;
+}
+
+footer .footer-quote-asat {
+  font-size: 13px;
+  line-height: 20px;
+}
+
+/* hover states */
+footer .footer-social a:hover {
+  text-decoration: underline;
+}
+
+footer .footer-links a:hover {
+  color: rgb(255 255 255);
+}
+
+footer .footer-legal a:hover {
+  color: rgb(255 255 255);
+}
+
+footer a.footer-quote:hover {
+  text-decoration: underline;
+}
+
+/* desktop: link column on the left, share price on the right */
 @media (width >= 900px) {
-  footer .footer > div {
-    padding: 40px 32px 24px;
+  footer .footer-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 1410px;
+    margin: 0 auto;
+    padding: 50px 30px 40px;
+  }
+
+  footer .footer-main {
+    display: block;
+    min-width: 0;
+  }
+
+  footer .footer-social {
+    gap: 28px;
+    padding: 10px 0;
+    margin-bottom: 14px;
+  }
+
+  footer .footer-links {
+    order: 0;
+    flex-flow: row wrap;
+    padding-bottom: 25px;
+  }
+
+  footer .footer-links a {
+    padding: 10px 50px 10px 0;
+  }
+
+  footer .footer-legal {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    width: fit-content;
+    max-width: 100%;
+    border-top: 1px solid rgb(170 170 170);
+    padding: 25px 0 9px;
+    margin-bottom: 6px;
+  }
+
+  footer .footer-legal .footer-logo {
+    order: 0;
+    height: 26px;
+    margin-right: 25px;
+    padding: 0;
+  }
+
+  footer .footer-legal .footer-copyright {
+    margin-top: 0;
+  }
+
+  footer .footer-legal .footer-legal-links {
+    margin: 0 0 0 3px;
+  }
+
+  footer .footer-legal-links a {
+    padding-left: 25px;
+  }
+
+  footer .footer-aside {
+    flex-shrink: 0;
+    margin-top: 34px;
+  }
+
+  footer .footer-quote {
+    padding-top: 10px;
   }
 }

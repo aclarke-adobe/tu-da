@@ -1,0 +1,35 @@
+{
+  "variantName": "accordion",
+  "baseBlock": "accordion",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "list + link",
+    "purpose": "expandable list of questions or topics, each revealing a body of content"
+  },
+  "contentPattern": {
+    "structure": "label cell | body cell (rich text, or a single /fragments/ link loaded as a fragment)",
+    "fields": [
+      "label",
+      "body"
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_351152a3c250"
+  ],
+  "usage": {
+    "pagesFound": 17,
+    "sampleUrls": [
+      "https://www.transurban.com/about-us/innovation",
+      "https://www.transurban.com/about-us/reporting",
+      "https://www.transurban.com/about-us/reporting/non-financial-reports-archive",
+      "https://www.transurban.com/campaigns/ignite",
+      "https://www.transurban.com/campaigns/nsw-toll-reform"
+    ]
+  },
+  "reuseGuidance": "Use for collapsible lists of detail items. A body that holds other blocks should be a fragment link."
+}

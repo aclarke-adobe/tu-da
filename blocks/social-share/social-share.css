@@ -1,0 +1,80 @@
+/* social-share: AddToAny 24px kit (source .a2a_kit.a2a_kit_size_24.a2a_default_style) */
+.social-share {
+  color: var(--text-color);
+  line-height: 24px;
+}
+
+.social-share .social-share-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.social-share .social-share-list li {
+  margin: 0;
+}
+
+.social-share a.share-link:any-link {
+  display: block;
+  padding: 0 2px;
+  color: var(--link-color);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16px;
+  text-decoration: none;
+}
+
+.social-share .social-share-tile {
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 3px;
+  background-color: #888990;
+  line-height: 24px;
+}
+
+.social-share .social-share-tile svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.social-share .share-link-twitter .social-share-tile {
+  background-color: #1d9bf0;
+}
+
+.social-share .share-link-facebook .social-share-tile {
+  background-color: #0866ff;
+}
+
+.social-share .share-link-linkedin .social-share-tile {
+  background-color: #007bb5;
+}
+
+.social-share .share-link-whatsapp .social-share-tile {
+  background-color: #12af0a;
+}
+
+.social-share a.share-link:hover .social-share-tile,
+.social-share a.share-link:focus-visible .social-share-tile {
+  opacity: 0.7;
+}
+
+/* authored icons keep the tile size */
+.social-share .share-link :is(picture, img, .icon) {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+/* label is read by assistive tech only (source .a2a_label is hidden in the icon kit) */
+.social-share .social-share-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

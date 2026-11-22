@@ -1,0 +1,30 @@
+{
+  "variantName": "columns",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "text",
+    "purpose": "plain multi-column layout of text"
+  },
+  "contentPattern": {
+    "structure": "one row per band; one cell per column (text, lists, images)",
+    "fields": [
+      "column content"
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_4195d82fee1a"
+  ],
+  "usage": {
+    "pagesFound": 1,
+    "sampleUrls": [
+      "https://www.transurban.com/communities/partnerships-and-grants/community-grants"
+    ]
+  },
+  "reuseGuidance": "Use for generic multi-column text. For text beside an image use columns-media."
+}

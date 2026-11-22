@@ -1,0 +1,46 @@
+{
+  "variantName": "cards-overlay",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "dense",
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "text + heading + link",
+    "purpose": "photo tiles with heading, text and link overlaid; tiles without a photo render as boxed text tiles"
+  },
+  "contentPattern": {
+    "structure": "optional image cell | body cell (heading, text, optional link)",
+    "fields": [
+      "image",
+      "heading",
+      "text",
+      "link"
+    ]
+  },
+  "options": [
+    {
+      "class": "tinted",
+      "label": "Tinted"
+    }
+  ],
+  "memberVariantIds": [
+    "v_319ac19bc784-3",
+    "v_5c2664ea4c4b-6",
+    "v_7d6e3502498c",
+    "v_8d180211646b",
+    "v_b38e9414d577-3",
+    "v_e6ae37f2a0cf"
+  ],
+  "usage": {
+    "pagesFound": 6,
+    "sampleUrls": [
+      "https://www.transurban.com/campaigns/fy18-achievements",
+      "https://www.transurban.com/campaigns/1h18-achievements",
+      "https://www.transurban.com/communities/life-around-our-roads",
+      "https://www.transurban.com/communities/partnerships-and-grants/driver-training-programs"
+    ]
+  },
+  "reuseGuidance": "Use for achievement or programme tiles over photography. Add (tinted) for a colour tint over the photo."
+}

@@ -1,0 +1,36 @@
+{
+  "variantName": "cards-video",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "heading + video",
+    "purpose": "grid of captioned embedded videos"
+  },
+  "contentPattern": {
+    "structure": "caption cell (heading or text) | video cell (YouTube/Vimeo link, optional poster image)",
+    "fields": [
+      "caption",
+      "video link",
+      "poster"
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_b38e9414d577-1",
+    "v_b38e9414d577-2"
+  ],
+  "usage": {
+    "pagesFound": 4,
+    "sampleUrls": [
+      "https://www.transurban.com/campaigns/ecodriving",
+      "https://www.transurban.com/communities/partnerships-and-grants/kidsafe/kidsafensw",
+      "https://www.transurban.com/communities/partnerships-and-grants/kidsafe/kidsafeqld",
+      "https://www.transurban.com/investor-centre/investor-day-2022"
+    ]
+  },
+  "reuseGuidance": "Use for a set of short videos. For a single video use embed-video."
+}

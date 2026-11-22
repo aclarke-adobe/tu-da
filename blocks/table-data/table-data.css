@@ -1,0 +1,55 @@
+.table-data {
+  max-width: var(--text-max-width);
+  color: var(--text-color);
+}
+
+.table-data .table-data-scroll {
+  overflow-x: auto;
+}
+
+.table-data table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--text-color);
+  font-size: var(--body-font-size-xs);
+  line-height: 24px;
+}
+
+.table-data th,
+.table-data td {
+  padding: 14px 25px;
+  border: 1px solid #d6d6d6;
+  font-weight: var(--body-font-weight);
+  text-align: left;
+  vertical-align: top;
+}
+
+.table-data th > :first-child,
+.table-data td > :first-child {
+  margin-top: 0;
+}
+
+.table-data th > :last-child,
+.table-data td > :last-child {
+  margin-bottom: 0;
+}
+
+/* source: links in cells are regular weight (global `main p > a` sets 600) */
+main .table-data a:any-link {
+  font-weight: var(--body-font-weight);
+}
+
+/* header: source <th> row (trust-distributions) - #000, 600, #eee fill */
+.table-data.header thead th {
+  background-color: #eee;
+  color: var(--heading-color);
+  font-weight: var(--heading-font-weight);
+}
+
+/* dark: same table with a dark header row */
+.table-data.dark thead th {
+  border-color: var(--dark-color);
+  background-color: var(--dark-color);
+  color: var(--background-color);
+  font-weight: var(--heading-font-weight);
+}

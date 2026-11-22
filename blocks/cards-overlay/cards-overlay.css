@@ -1,0 +1,161 @@
+/*
+ * Cards Overlay: photo tiles with heading, text and pill CTA over the image.
+ * Source: .feature-tile--cta (transurban.com). Mobile first; 3 columns at >= 1024px.
+ * Default: centred white text, top aligned, charcoal pill.
+ * tinted: left aligned, vertically centred, rgb(10 72 66 / 80%) mask, green pill.
+ * Tiles without a photo: grey bordered box, black text, green pill.
+ */
+.cards-overlay > ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cards-overlay .cards-overlay-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  min-height: 360px;
+  overflow: hidden;
+  color: #fff;
+  text-align: center;
+}
+
+.cards-overlay .cards-overlay-card-image {
+  position: absolute;
+  inset: 0;
+  line-height: 0;
+}
+
+/* source keeps the photo at full tile height, anchored to the tile's right edge */
+.cards-overlay .cards-overlay-card-image img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: auto;
+  min-width: 100%;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cards-overlay .cards-overlay-card-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 50px 40px;
+}
+
+.cards-overlay .cards-overlay-card-body > :is(h1, h2, h3, h4, h5, h6) {
+  margin: 0 0 20px;
+  color: inherit;
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-xl);
+  font-weight: 600;
+  line-height: var(--heading-line-height-xl);
+}
+
+.cards-overlay .cards-overlay-card-body > p {
+  margin: 0 0 20px;
+  color: inherit;
+  font-size: var(--body-font-size-xs);
+  line-height: 24px;
+}
+
+.cards-overlay .cards-overlay-card-body > .cards-overlay-card-cta {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 10px;
+}
+
+/* source renders an (empty) text row between heading and CTA: 40px heading-to-pill */
+.cards-overlay .cards-overlay-card-body > :is(h1, h2, h3, h4, h5, h6) + .cards-overlay-card-cta {
+  margin-top: 20px;
+}
+
+.cards-overlay .cards-overlay-card-body > :last-child:not(.cards-overlay-card-cta) {
+  margin-bottom: 0;
+}
+
+main .cards-overlay .cards-overlay-card-cta a:any-link {
+  display: inline-block;
+  box-sizing: border-box;
+  border-radius: var(--button-radius);
+  padding: 10px 20px;
+  background-color: var(--brand-charcoal);
+  box-shadow: inset 0 0 0 100vmax rgb(255 255 255 / 0%);
+  color: #fff;
+  font-size: var(--body-font-size-s);
+  font-weight: 600;
+  line-height: 30px;
+  text-align: center;
+  text-decoration: none;
+  transition: all var(--button-transition);
+}
+
+main .cards-overlay .cards-overlay-card-cta a:hover,
+main .cards-overlay .cards-overlay-card-cta a:focus-visible {
+  box-shadow: inset 0 0 0 100vmax rgb(255 255 255 / 15%);
+  color: #fff;
+  text-decoration: none;
+}
+
+main .cards-overlay .cards-overlay-card-cta a:focus-visible {
+  outline: 2px solid var(--focus-ring-color);
+  outline-offset: 2px;
+}
+
+/* text-only tiles: grey bordered box with dark text and green pill */
+.cards-overlay .cards-overlay-card-text {
+  border: 1px solid var(--border-color);
+  background-color: var(--brand-grey-light);
+  color: #000;
+}
+
+main .cards-overlay .cards-overlay-card-text .cards-overlay-card-cta a:any-link {
+  background-color: var(--brand-green);
+}
+
+/* tinted: green-teal mask, left aligned, vertically centred, green pill */
+.cards-overlay.tinted .cards-overlay-card {
+  justify-content: center;
+  text-align: start;
+}
+
+.cards-overlay.tinted .cards-overlay-card-body {
+  padding: 40px;
+}
+
+.cards-overlay.tinted .cards-overlay-card-body > .cards-overlay-card-cta {
+  justify-content: flex-start;
+}
+
+.cards-overlay.tinted .cards-overlay-card-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgb(10 72 66 / 80%);
+}
+
+main .cards-overlay.tinted .cards-overlay-card-cta a:any-link {
+  background-color: var(--brand-green);
+}
+
+@media (width >= 1024px) {
+  .cards-overlay > ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cards-overlay .cards-overlay-card {
+    min-height: 400px;
+  }
+
+  .cards-overlay .cards-overlay-card-body {
+    padding: 40px;
+  }
+}

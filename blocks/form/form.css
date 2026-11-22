@@ -1,0 +1,226 @@
+/*
+ * Form block. Values from the source share calculator (.share-price-calculator):
+ * h2 28px/40px 600 (22px/30px mobile), 25px below; copy 16px/24px #333, 14px below;
+ * labels 16px/24px 700, 30px above / 25px below; field rows 15px below;
+ * 50px field + pill button (0 40px 40px 0, #0e893c); result 48px/50px 600; disclaimer 20px above.
+ */
+.form {
+  color: var(--text-color);
+}
+
+.form .form-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.form .form-form > * {
+  box-sizing: border-box;
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+.form .form-field,
+.form fieldset.form-field {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* copy rows */
+.form .form-field-heading :is(h1, h2, h3, h4, h5, h6) {
+  margin: 0 0 25px;
+  color: var(--heading-color);
+  font-family: var(--heading-font-family);
+  font-weight: var(--heading-font-weight);
+}
+
+.form .form-field-plaintext p {
+  margin: 0 0 var(--paragraph-margin);
+  font-size: var(--body-font-size-m);
+  line-height: 24px;
+}
+
+/* the last copy row after the fields is the disclaimer */
+.form .form-field:not(.form-field-heading, .form-field-plaintext) ~ .form-field-plaintext p {
+  margin: 20px 0 0;
+}
+
+/* labels */
+.form .form-label {
+  display: block;
+  margin: 30px 0 25px;
+  font-size: var(--body-font-size-m);
+  font-weight: 700;
+  line-height: 24px;
+  text-align: left;
+}
+
+.form legend.form-label {
+  padding: 0;
+}
+
+.form .form-label[data-required='true']::after {
+  content: ' *';
+}
+
+/* field rows */
+.form .form-field:not(.form-field-heading, .form-field-plaintext, .form-field-hidden) {
+  margin-bottom: 15px;
+}
+
+.form input:not([type='checkbox'], [type='radio']),
+.form select,
+.form textarea {
+  box-sizing: border-box;
+  width: 100%;
+  height: 50px;
+  margin: 0;
+  padding: 0 16px;
+  border: 0;
+  border-radius: var(--button-radius) 0 0 var(--button-radius);
+  background-color: #fff;
+  color: var(--text-color);
+  font: inherit;
+  font-size: var(--body-font-size-m);
+  line-height: 24px;
+}
+
+.form input[type='number'] {
+  appearance: textfield;
+}
+
+.form input[type='number']::-webkit-inner-spin-button,
+.form input[type='number']::-webkit-outer-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+.form input::placeholder,
+.form textarea::placeholder {
+  color: #999;
+  opacity: 1;
+}
+
+/* the white field needs an edge when the section is not grey */
+main > .section:not(.light, .grey, .highlight) .form :is(input:not([type='checkbox'], [type='radio']), select, textarea) {
+  border: 1px solid var(--brand-grey-outline);
+}
+
+.form select {
+  appearance: none;
+  padding-right: 48px;
+  background-image: linear-gradient(45deg, transparent 50%, currentcolor 50%), linear-gradient(135deg, currentcolor 50%, transparent 50%);
+  background-position: calc(100% - 24px) 50%, calc(100% - 18px) 50%;
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
+}
+
+.form textarea {
+  height: auto;
+  min-height: 120px;
+  padding: 13px 16px;
+  border-radius: 0;
+  resize: vertical;
+}
+
+.form .form-field-checkbox,
+.form .form-option {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.form .form-option {
+  display: flex;
+}
+
+.form .form-field-checkbox label,
+.form .form-option label {
+  font-weight: 400;
+}
+
+.form input:focus-visible,
+.form select:focus-visible,
+.form textarea:focus-visible {
+  outline: 2px solid var(--focus-ring-color);
+  outline-offset: 2px;
+}
+
+/* submit: square-left pill that closes the field it follows */
+.form .form-field-submit {
+  align-items: flex-start;
+}
+
+.form .form-field-submit button.button {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 50px;
+  border: 0 none #fff;
+  border-radius: 0 var(--button-radius) var(--button-radius) 0;
+  padding: 10px;
+  background-color: var(--brand-green);
+  color: #fff;
+  font-size: var(--body-font-size-s);
+  font-weight: 600;
+  line-height: 30px;
+  text-align: center;
+}
+
+/* a single-line field directly followed by submit sits beside it (65% / 35%) */
+.form .form-field:has(> input:not([type='checkbox'], [type='radio'])):has(+ .form-field-submit) {
+  flex: 0 0 65%;
+}
+
+.form .form-field:has(> input:not([type='checkbox'], [type='radio'])) + .form-field-submit {
+  flex: 0 0 35%;
+  align-self: flex-end;
+}
+
+/* result */
+.form .form-output {
+  display: block;
+  align-self: flex-start;
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 50px;
+}
+
+.form .form-help {
+  margin: 0;
+  font-size: var(--body-font-size-xs);
+}
+
+.form .form-status:not([hidden]) {
+  margin: 0;
+  color: #b00020;
+}
+
+@media (width >= 900px) {
+  /* field + button take 55% (70% / 30%); the result starts at 62.5% */
+  .form .form-field:has(> input:not([type='checkbox'], [type='radio'])):has(+ .form-field-submit) {
+    flex-basis: 38.5%;
+  }
+
+  .form .form-field:has(> input:not([type='checkbox'], [type='radio'])) + .form-field-submit {
+    flex-basis: 16.5%;
+  }
+
+  .form .form-field-submit button.button {
+    padding: 10px 20px;
+  }
+
+  .form .form-field-submit + .form-field-output {
+    flex: 1 1 0;
+    margin-left: 7.5%;
+  }
+}
+
+@media (width >= 1024px) {
+  .form .form-field-heading :is(h1, h2, h3, h4, h5, h6) {
+    max-width: var(--text-max-width);
+  }
+}

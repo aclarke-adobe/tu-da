@@ -1,0 +1,95 @@
+/* source: Transurban video-embed modules in a two-up grid (grid__column--width-2-4) */
+.cards-video > ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cards-video .cards-video-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* source: iframe sits in a 64% padding-ratio box on mobile (325 x 208) */
+.cards-video .cards-video-card-video {
+  position: relative;
+  aspect-ratio: 325 / 208;
+  line-height: 0;
+}
+
+.cards-video .cards-video-card-video iframe,
+.cards-video .cards-video-card-video picture,
+.cards-video .cards-video-card-video img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.cards-video .cards-video-card-video img {
+  object-fit: cover;
+}
+
+/* source: caption <p> under the video, 16px / 24px, 14px margins */
+.cards-video .cards-video-card-caption {
+  margin: var(--paragraph-margin) 0;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  font-weight: var(--body-font-weight);
+  line-height: 24px;
+  color: var(--text-color);
+}
+
+.cards-video .cards-video-card-caption > * {
+  margin: 0;
+  font: inherit;
+  color: inherit;
+}
+
+.cards-video .cards-video-card-caption > * + * {
+  margin-top: var(--paragraph-margin);
+}
+
+.cards-video .cards-video-card-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 64px;
+  height: 64px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(0 0 0 / 60%);
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.cards-video .cards-video-card-play::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 54%;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 18px solid #fff;
+  transform: translate(-50%, -50%);
+}
+
+@media (width >= 900px) {
+  /* source: two 50% columns with 20px gutter; a lone item keeps half width */
+  .cards-video > ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* source: iframe height attribute 315px, width stretched to the column */
+  .cards-video .cards-video-card-video {
+    aspect-ratio: auto;
+    height: 315px;
+  }
+}

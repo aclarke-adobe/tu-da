@@ -1,0 +1,38 @@
+{
+  "variantName": "cards-news",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "link + image",
+    "purpose": "grid of news teasers with image, date, headline and excerpt linking to articles"
+  },
+  "contentPattern": {
+    "structure": "image cell | body cell (date paragraph, headline with link, excerpt)",
+    "fields": [
+      "image",
+      "date",
+      "headline",
+      "excerpt",
+      "link"
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_75d3a323186b"
+  ],
+  "usage": {
+    "pagesFound": 9,
+    "sampleUrls": [
+      "https://www.transurban.com/news/behind-the-scenes-at-our-freeway-control-centre",
+      "https://www.transurban.com/news/bridge-to-brisbane-2026",
+      "https://www.transurban.com/news/entering-new-markets-in-the-us",
+      "https://www.transurban.com/news/i-24-southeast-choice-lanes-commercial-close",
+      "https://www.transurban.com/news/ipa-partnerships-conference-2026"
+    ]
+  },
+  "reuseGuidance": "Use for news or article listings. The card is clickable through the headline link."
+}

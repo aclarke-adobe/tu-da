@@ -1,0 +1,117 @@
+/* columns-media: text column beside a media column (values: migration-work/design/columns-media*) */
+
+.columns-media {
+  color: var(--text-color);
+}
+
+.columns-media .columns-media-row {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.columns-media .columns-media-row + .columns-media-row {
+  margin-top: 15px;
+}
+
+.columns-media .columns-media-text > :first-child {
+  margin-top: 0;
+}
+
+.columns-media .columns-media-text > :last-child {
+  margin-bottom: 0;
+}
+
+.columns-media .columns-media-text li + li {
+  margin-top: 7px;
+}
+
+.columns-media .columns-media-media {
+  line-height: 0;
+}
+
+.columns-media .columns-media-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* boxed: dark teal panel bleeding to the section edges (source band is full
+   width, content inset by the page padding); list items are icon + text rows */
+.columns-media.boxed {
+  --heading-color: #fff;
+  --text-color: #fff;
+
+  margin-inline: calc(-1 * var(--content-padding));
+  padding: 55px var(--content-padding) 0;
+  background-color: #0b4c45;
+}
+
+.columns-media.boxed .columns-media-row {
+  gap: 21px;
+}
+
+.columns-media.boxed .columns-media-text ul {
+  padding: 0;
+  list-style: none;
+}
+
+.columns-media.boxed .columns-media-text li {
+  display: flex;
+  align-items: center;
+  min-height: 57px;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 20px;
+}
+
+.columns-media.boxed .columns-media-text li + li {
+  margin-top: 0;
+}
+
+.columns-media.boxed .columns-media-text li > picture {
+  flex: 0 0 70px;
+  align-self: flex-start;
+  line-height: 0;
+}
+
+.columns-media.boxed .columns-media-text li > picture img {
+  width: 50px;
+  height: 50px;
+}
+
+@media (width >= 900px) {
+  .columns-media .columns-media-row {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .columns-media .columns-media-row + .columns-media-row {
+    margin-top: 20px;
+  }
+
+  /* source grid: 2/3 and 1/3 columns with a 20px gutter */
+  .columns-media .columns-media-text {
+    flex: 0 1 calc((100% + 20px) * 2 / 3 - 20px);
+    min-width: 0;
+  }
+
+  .columns-media .columns-media-media {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  /* source panel keeps 6px below the inline illustration */
+  .columns-media.boxed {
+    padding-bottom: 6px;
+  }
+
+  .columns-media.boxed .columns-media-row {
+    gap: 20px;
+  }
+
+  .columns-media.boxed .columns-media-text li {
+    font-size: 24px;
+  }
+}
