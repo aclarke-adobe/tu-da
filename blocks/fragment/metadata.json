@@ -1,0 +1,12 @@
+{
+  "variantName": "fragment",
+  "baseBlock": "fragment",
+  "version": "1.0.0",
+  "created": "2026-11-23T00:00:00.000Z",
+  "visualCharacteristics": {
+    "purpose": "embeds a shared content fragment (a page under /fragments/) in place"
+  },
+  "contentPattern": {
+    "structure": "single cell: link to a /fragments/ page"
+  }
+}

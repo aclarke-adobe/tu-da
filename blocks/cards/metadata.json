@@ -1,0 +1,24 @@
+{
+  "variantName": "cards",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-11-23T00:00:00.000Z",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "imagePattern": "image-top",
+    "purpose": "grid of profile tiles (board, executive committee) with a photo, name and role linking to a profile page"
+  },
+  "contentPattern": {
+    "structure": "repeating rows: image cell | body cell (name heading link + role text)",
+    "imageCount": 1
+  },
+  "usage": {
+    "pagesUsing": [
+      "about-us/board-of-directors",
+      "about-us/executive-committee",
+      "investor-centre/investor-day-2023"
+    ],
+    "reuseCount": 13,
+    "lastUsed": "2026-11-23T00:00:00.000Z"
+  }
+}
